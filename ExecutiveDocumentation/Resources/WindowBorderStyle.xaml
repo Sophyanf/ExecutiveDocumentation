@@ -9,6 +9,7 @@
                 <Label Content="Best Messenger"
                        Foreground="White"
                        FontWeight="Bold"
+                       
                        />
                 <StackPanel HorizontalAlignment="Right"
                             Orientation="Horizontal"
@@ -49,6 +50,7 @@
                         </Button.Template>
                     </Button>
                 </StackPanel>
+                
             </Grid>
         </Border>
     </DataTemplate>

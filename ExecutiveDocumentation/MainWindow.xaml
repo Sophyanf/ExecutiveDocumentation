@@ -8,13 +8,23 @@
         Background="#212121"
         AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip"
-        MouseDown="Window_MouseDown"
          
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <DockPanel>
+    <DockPanel >
         <ContentControl DockPanel.Dock="Top"
                         ContentTemplate="{StaticResource ResourceKey=WindowBorderStyle}"
                         />
+
+        <Grid>
+            <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/fon.jpg">
+                </Grid.Background>
+            </Grid>
+          
+
+
+        </Grid> 
     </DockPanel>
 </Window>
