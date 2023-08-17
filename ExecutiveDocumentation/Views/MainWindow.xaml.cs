@@ -1,7 +1,13 @@
-﻿using ExecutiveDocumentation.ViewModels;
+﻿using ExecutiveDocumentation.Models;
+using ExecutiveDocumentation.ViewModels;
+using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Word;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.Odbc;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -16,6 +22,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using Excel = Microsoft.Office.Interop.Excel;
+using Label = System.Windows.Controls.Label;
 
 namespace ExecutiveDocumentation.Views
 {
@@ -24,6 +32,8 @@ namespace ExecutiveDocumentation.Views
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
+        List<AktHiddenWork> aktHiddenWorkForPrint = new List<AktHiddenWork>();
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -32,25 +42,108 @@ namespace ExecutiveDocumentation.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var helper = new WordHalper("TempDog.docx");
+         foreach (var item in aktHiddenWorkForPrint)
+            {
+                printAkt(item);
+            }
+            MessageBox.Show("Завершено");
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.DefaultExt = "*.xls;*.xlsx";
+            ofd.Filter = "файл Excel (Spisok.xlsx)|*.xlsx";
+            ofd.Title = "Выберите файл базы данных";
+            ofd.ShowDialog();
+            
+            
+            LoadExcelFile(ofd.FileName);
+        }
+
+        private void LoadExcelFile(string fileName)
+        {
+            Excel.Application ObjWorkExcel = new Excel.Application();
+            Excel.Workbook ObjWorkBook = ObjWorkExcel.Workbooks.Open(fileName);
+            Excel.Worksheet ObjWorkSheet = (Excel.Worksheet)ObjWorkBook.Sheets[1]; //получить 1-й лист
+            for (int j = 2; j < 4; j++) {
+                AktHiddenWork aktHiddenWork = new AktHiddenWork();
+                for (int i = 1; i < 11; i++)
+                {
+                    var value = ObjWorkSheet.Cells[j, i].Value;
+                   
+                   
+                    switch (i)
+                    {
+                        case 1:
+                            aktHiddenWork.ID = value.ToString();
+                            break;
+                        case 2:
+                            aktHiddenWork.DayStart = value.ToString();
+                            break;
+                        case 3:
+                            aktHiddenWork.DayEnd = value.ToString();
+                            break;
+                        case 4:
+                            aktHiddenWork.Month = value;
+                            break;
+                        case 5:
+                            aktHiddenWork.Year = value.ToString();
+                            break;
+                        case 6:
+                            aktHiddenWork.WorkType = value;
+                            break;
+                        case 7:
+                            aktHiddenWork.ProjectFounder = value;
+                            break;
+                        case 8:
+                            aktHiddenWork.Certificate = value;
+                            break;
+                        case 9:
+                            aktHiddenWork.TechRelevant = value;
+                            break;
+                        case 10:
+                            aktHiddenWork.NextWork = value;
+                            break;
+                        case 11:
+                            aktHiddenWork.DocRelevant = value;
+                            break;
+
+                    }
+                    
+                }
+                aktHiddenWorkForPrint.Add(aktHiddenWork);
+            }
+            String str = "";
+            foreach (var item in aktHiddenWorkForPrint)
+            {
+                str += item.WorkType + " - " + item.WorkType + Environment.NewLine + Environment.NewLine;
+            }
+            MessageBox.Show(str);
+            ObjWorkExcel.ActiveWorkbook.Close();
+            ObjWorkExcel.Quit();
+            
+        }
+
+        public void printAkt(AktHiddenWork aktHiddenWork)
+        {
+            var helper = new WordHalper("AktHiddenWork.docx");
 
             var items = new Dictionary<string, string>
             {
-                {"<NAME>", tb1.Text },
-                /*{"<URADRESS>",tb2.Text },
-                {"<INNKPP>", tb3.Text },
-                {"<OGRN>", tb4.Text }*/
-               /* <BANK>
-                <RSH>
-                <KSH>
-                <BIC>
-                <TEL>
-                <MAIL>*/
-               
+                { "<ID>", aktHiddenWork.ID },
+                { "<DayStart>", aktHiddenWork.DayStart},
+                { "<DayEnd>", aktHiddenWork.DayEnd },
+                { "<Month>", aktHiddenWork.Month },
+                {"<Year>", aktHiddenWork.Year },
+                {"<WorkType>", aktHiddenWork.WorkType },
+                {"<ProjectFounder>", aktHiddenWork.ProjectFounder },
+                {"<DocRelevant>", aktHiddenWork.DocRelevant },
+                {"<TechRelevant>", aktHiddenWork.TechRelevant },
             };
             helper.Process(items);
-
         }
-     
     }
-}
+    }
+

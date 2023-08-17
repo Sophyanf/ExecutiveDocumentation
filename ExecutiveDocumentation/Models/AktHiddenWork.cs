@@ -6,19 +6,24 @@ using System.Threading.Tasks;
 
 namespace ExecutiveDocumentation.Models
 {
-    internal class AktHiddenWork
+    public class AktHiddenWork
     {
-        int ID { get; set; }
-        int DayStart { get; set; }
-        int DayEnd { get; set; }
-        string Month { get; set; }
-        string Year { get; set; }
-        string WorkType { get; set; }
-        string ProjectFounder { get; set; }
-        string Certificate { get; set; }
-        string TechRelevant { get; set; }
-        string NextWork { get; set; }
-        string DocRelevant { get; set; }    
+        public string ID { get; set; }
+        public string DayStart { get; set; }
+        public string DayEnd { get; set; }
+        public string Month { get; set; }
+        public string Year { get; set; }
+        public string WorkType { get; set; }
+        public string ProjectFounder { get; set; }
+        public string Certificate { get; set; }
+        public string TechRelevant { get; set; }
+        public string NextWork { get; set; }
+        public string DocRelevant { get; set; }
+
+        public override string ToString()
+        {
+            return ID + WorkType;
+        }
 
     }
 }

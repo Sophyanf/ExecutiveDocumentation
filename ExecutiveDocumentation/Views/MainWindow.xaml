@@ -29,100 +29,36 @@
                
             </StackPanel.Background>
             <StackPanel Orientation="Vertical"  >
-
                 <Button
                     Content="Заполнить" 
-                    Margin="30,350,30,0"
+                    Margin="30,200,30,0"
                     Width="80"
                     Height ="40" Click="Button_Click"
+                />
+                <Button
+                    Content="Загрузить" 
+                    Margin="30,50,30,0"
+                    Width="80"
+                    Height ="40" Click="Button_Click_1" 
                 /> 
                 
             </StackPanel>
-            <StackPanel Orientation="Vertical"  Margin="0,0,0,0">
+            <StackPanel Orientation="Vertical"  Margin="0,0,0,0" Name ="TitleName">
 
-                <StackPanel Orientation="Horizontal" Margin="7">
+                <StackPanel Orientation="Horizontal" Margin="7"  >
                     <Label Content="Наименование"/>
                 </StackPanel >
 
-                <StackPanel Orientation="Horizontal" Margin="7">
-                    <Label Content="Юр. адрес"/>
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="7">
-                    <Label Content="ИНН/КПП"/>
-                </StackPanel >
-                
-                <StackPanel Orientation="Horizontal" Margin="7">
-                    <Label Content="ОГРН"/>
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="7">
-                    <Label Content="Банк"/>
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="7">
-                    <Label Content="БИК"/>
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="7">
-                    <Label Content="Расчетный счет"/>
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="7">
-                    <Label Content="Кор.счет"/>
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="7">
-                    <Label Content="Телефон"/>
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="7">
-                    <Label Content="E-mail"/>
-                </StackPanel >
+               
 
             </StackPanel>
-            <StackPanel Orientation="Vertical" >
+            <StackPanel Orientation="Vertical" Name ="ValueName">
 
                 <StackPanel Orientation="Horizontal" Margin="11">
                     <TextBox Width="300" Name="tb1" />
                 </StackPanel >
 
-                <StackPanel Orientation="Horizontal" Margin="11">
-                    <TextBox Width="300" Name="tb2"/>
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="11">
-                    <TextBox Width="300" Name="tb3"/>
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="11">
-                    <TextBox Width="300" Name="tb4"/>
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="11">
-                    <TextBox Width="300" />
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="11">
-                    <TextBox Width="300" />
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="11">
-                    <TextBox Width="300" />
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="11">
-                    <TextBox Width="300" />
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="11">
-                    <TextBox Width="300" />
-                </StackPanel >
-
-                <StackPanel Orientation="Horizontal" Margin="11">
-                    <TextBox Width="300" />
-                </StackPanel >
-
+               
             </StackPanel>
         </StackPanel>
           

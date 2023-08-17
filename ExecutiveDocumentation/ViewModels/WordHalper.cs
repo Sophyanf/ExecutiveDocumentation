@@ -1,10 +1,16 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Word;
+using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using static System.Net.WebRequestMethods;
+using File = System.IO.File;
 using Word = Microsoft.Office.Interop.Word;
 
 
@@ -14,6 +20,7 @@ namespace ExecutiveDocumentation.ViewModels
     {
         FileInfo fileInfo;
         Word.Application app = null;
+        List<System.Drawing.Image> printList = new List<System.Drawing.Image>();
         public WordHalper(string fileName)
         {
             if (File.Exists(fileName))
@@ -32,9 +39,11 @@ namespace ExecutiveDocumentation.ViewModels
                 Object missing = Type.Missing;
 
                 app.Documents.Open(file);
-
+                app.Visible = true;
+                MessageBox.Show("");
                 foreach (var item in items)
                 {
+                   
                     Word.Find find = app.Selection.Find;
                     find.Text = item.Key;
                     find.Replacement.Text = item.Value;
@@ -52,13 +61,13 @@ namespace ExecutiveDocumentation.ViewModels
                         Format: false,
                         ReplaceWith: missing, Replace: replace);
                 }
-
-                /* Object newFileName = Path.Combine(fileInfo.DirectoryName,  "1.docx");
-                app.ActiveDocument.SaveAs2(newFileName);*/
-                app.ActiveDocument.Save();
-                app.ActiveDocument.Close();
+                
+                MessageBox.Show("После");
+                app.ActiveDocument.PrintOut();
+                app.ActiveDocument.Close( 0);
                 return true;
-            }
+                 }
+             
             catch(Exception ex) { Console.WriteLine(ex.Message); }
             finally
             {
@@ -67,5 +76,6 @@ namespace ExecutiveDocumentation.ViewModels
             
             return false;
         }
+  
     }
 } 
