@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using static System.Net.WebRequestMethods;
 using File = System.IO.File;
 using Word = Microsoft.Office.Interop.Word;
@@ -20,7 +21,8 @@ namespace ExecutiveDocumentation.ViewModels
     {
         FileInfo fileInfo;
         Word.Application app = null;
-        List<System.Drawing.Image> printList = new List<System.Drawing.Image>();
+        Object missing = Type.Missing;
+
         public WordHalper(string fileName)
         {
             if (File.Exists(fileName))
@@ -30,40 +32,24 @@ namespace ExecutiveDocumentation.ViewModels
             else { throw new ArgumentException("File not found"); }
         }
 
-        public bool Process(Dictionary<string, string> items)
+        public bool ProcessFindTeg(Dictionary<string, string> items)
         {
             try
             {
                 app = new Word.Application();
                 Object file = fileInfo.FullName;
-                Object missing = Type.Missing;
+                
 
                 app.Documents.Open(file);
                 app.Visible = true;
                 MessageBox.Show("");
                 foreach (var item in items)
                 {
-                   
-                    Word.Find find = app.Selection.Find;
-                    find.Text = item.Key;
-                    find.Replacement.Text = item.Value;
-
-                    Object wrap = Word.WdFindWrap.wdFindContinue;
-                    Object replace = Word.WdReplace.wdReplaceAll;
-                    find.Execute(FindText: Type.Missing,
-                        MatchCase: false,
-                        MatchWholeWord: false,
-                        MatchWildcards: false,
-                        MatchSoundsLike: missing,
-                        MatchAllWordForms: false,
-                        Forward: true,
-                        Wrap: wrap,
-                        Format: false,
-                        ReplaceWith: missing, Replace: replace);
+                    findTeg(item.Key, item.Value);
                 }
                 
                 MessageBox.Show("После");
-                app.ActiveDocument.PrintOut();
+                app.ActiveDocument.PrintPreview();
                 app.ActiveDocument.Close( 0);
                 return true;
                  }
@@ -76,6 +62,25 @@ namespace ExecutiveDocumentation.ViewModels
             
             return false;
         }
-  
+        
+        public void findTeg (string key, string value)
+        {
+            Word.Find find = app.Selection.Find;
+            find.Text = key;
+            find.Replacement.Text = value;
+
+            Object wrap = Word.WdFindWrap.wdFindContinue;
+            Object replace = Word.WdReplace.wdReplaceAll;
+            find.Execute(FindText: Type.Missing,
+                MatchCase: false,
+                MatchWholeWord: false,
+                MatchWildcards: false,
+                MatchSoundsLike: missing,
+                MatchAllWordForms: false,
+                Forward: true,
+                Wrap: wrap,
+                Format: false,
+                ReplaceWith: missing, Replace: replace);
+        }
     }
 } 

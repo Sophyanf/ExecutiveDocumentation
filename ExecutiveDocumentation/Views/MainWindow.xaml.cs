@@ -27,12 +27,10 @@ using Label = System.Windows.Controls.Label;
 
 namespace ExecutiveDocumentation.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
+   
     public partial class MainWindow : System.Windows.Window
     {
-        List<AktHiddenWork> aktHiddenWorkForPrint = new List<AktHiddenWork>();
+        
         
         public MainWindow()
         {
@@ -40,29 +38,28 @@ namespace ExecutiveDocumentation.Views
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /*private void Button_Click(object sender, RoutedEventArgs e)
         {
-         foreach (var item in aktHiddenWorkForPrint)
+            foreach (var item in aktHiddenWorkForPrint)
             {
                 printAkt(item);
             }
             MessageBox.Show("Завершено");
 
-        }
+        }*/
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
+            /*OpenFileDialog ofd = new OpenFileDialog();
             ofd.DefaultExt = "*.xls;*.xlsx";
             ofd.Filter = "файл Excel (Spisok.xlsx)|*.xlsx";
             ofd.Title = "Выберите файл базы данных";
             ofd.ShowDialog();
-            
-            
-            LoadExcelFile(ofd.FileName);
+            var helper = new ExcelHelper(ofd.FileName);
+            helper.ProcessLoadFromExcel(aktHiddenWorkForPrint);*/
         }
 
-        private void LoadExcelFile(string fileName)
+      /*  private void LoadExcelFile(string fileName)
         {
             Excel.Application ObjWorkExcel = new Excel.Application();
             Excel.Workbook ObjWorkBook = ObjWorkExcel.Workbooks.Open(fileName);
@@ -124,26 +121,9 @@ namespace ExecutiveDocumentation.Views
             ObjWorkExcel.ActiveWorkbook.Close();
             ObjWorkExcel.Quit();
             
-        }
+        }*/
 
-        public void printAkt(AktHiddenWork aktHiddenWork)
-        {
-            var helper = new WordHalper("AktHiddenWork.docx");
-
-            var items = new Dictionary<string, string>
-            {
-                { "<ID>", aktHiddenWork.ID },
-                { "<DayStart>", aktHiddenWork.DayStart},
-                { "<DayEnd>", aktHiddenWork.DayEnd },
-                { "<Month>", aktHiddenWork.Month },
-                {"<Year>", aktHiddenWork.Year },
-                {"<WorkType>", aktHiddenWork.WorkType },
-                {"<ProjectFounder>", aktHiddenWork.ProjectFounder },
-                {"<DocRelevant>", aktHiddenWork.DocRelevant },
-                {"<TechRelevant>", aktHiddenWork.TechRelevant },
-            };
-            helper.Process(items);
-        }
+       
     }
     }
 
