@@ -59,7 +59,6 @@ namespace ExecutiveDocumentation.ViewModels
             {
                 if (app!= null) { app.Quit(); }
             }
-            
             return false;
         }
         
