@@ -35,7 +35,7 @@ namespace ExecutiveDocumentation
             for (int j = 2; j < 4; j++)
             {
                 aktHiddenWork = new AktHiddenWork();
-                for (int i = 1; i < 11; i++)
+                for (int i = 1; i < 11; i++)  
                 {
                     getDataForAkt(j, i);
 

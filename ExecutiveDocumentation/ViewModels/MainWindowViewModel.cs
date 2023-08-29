@@ -35,10 +35,11 @@ namespace ExecutiveDocumentation.ViewModels
         
         private void PrintDocument() 
         {
-            foreach (var item in aktHiddenWorkForPrint)
+            /*foreach (var item in aktHiddenWorkForPrint)
             {
                 printAkt(item);
-            }
+            }*/
+            printAkt(aktHiddenWorkForPrint[0]);
             MessageBox.Show("Завершено");
         }
 

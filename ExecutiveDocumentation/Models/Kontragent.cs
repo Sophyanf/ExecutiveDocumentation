@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ExecutiveDocumentation.Models
 {
-    internal class Kontragent
+    public class Kontragent
     {
+        public int ID { get; set; }
         public string KontragentName { get; set; }
         public string KontragentShortName { get; set; }
         public string KontragentAdress { get; set; }

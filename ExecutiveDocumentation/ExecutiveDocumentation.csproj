@@ -98,17 +98,29 @@
     <Compile Include="ActionCommand.cs" />
     <Compile Include="AppDbContext.cs" />
     <Compile Include="ExcelHelper.cs" />
+    <Compile Include="Migrations\202308291431123_Init.cs" />
+    <Compile Include="Migrations\202308291431123_Init.designer.cs">
+      <DependentUpon>202308291431123_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AktHiddenWork.cs" />
     <Compile Include="Models\ConstructionObject.cs" />
     <Compile Include="Models\Kontragent.cs" />
     <Compile Include="Models\ProjectForObject.cs" />
     <Compile Include="Models\ResponsiblPerson.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\AddNewObject.xaml.cs">
+      <DependentUpon>AddNewObject.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
+    <Page Include="Views\AddNewObject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -147,6 +159,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202308291431123_Init.resx">
+      <DependentUpon>202308291431123_Init.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

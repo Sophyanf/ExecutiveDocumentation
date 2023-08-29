@@ -1,0 +1,21 @@
+﻿<Window x:Class="ExecutiveDocumentation.Views.AddNewObject"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
+        mc:Ignorable="d"
+        Title="AddNewObject" Height="450" Width="800">
+    <DockPanel >
+        <ContentControl DockPanel.Dock="Top"
+                        ContentTemplate="{StaticResource ResourceKey=WindowBorderStyle}"
+                        />
+
+        <StackPanel Orientation="Horizontal" >
+            <StackPanel.Background>
+                <ImageBrush ImageSource="{StaticResource ResourceKey=WindBackgraund}" />
+
+                </StackPanel.Background>
+            </StackPanel>
+    </DockPanel>
+</Window>

@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Interop.Word;
+﻿using Microsoft.Office.Core;
+using Microsoft.Office.Interop.Word;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;
@@ -49,7 +50,11 @@ namespace ExecutiveDocumentation.ViewModels
                 }
                 
                 MessageBox.Show("После");
-                app.ActiveDocument.PrintPreview();
+
+                PrintDocument pd = new PrintDocument();
+                pd.PrinterSettings.Duplex = Duplex.Vertical;
+                app.ActiveDocument.SaveAs2(pd);
+                pd.Print();
                 app.ActiveDocument.Close( 0);
                 return true;
                  }
