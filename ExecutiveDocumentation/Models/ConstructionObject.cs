@@ -9,6 +9,7 @@ namespace ExecutiveDocumentation.Models
     public class ConstructionObject
     {
         public int ID { get; set; }
+        public WorksTipeObg ListOfWorks { get; set; }
         public string ObjectName { get; set; }
         public string ObjectAdress { get; set; }
         public Kontragent ConstructionOrganization { get; set; }

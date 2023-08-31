@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ExecutiveDocumentation.Models
 {
-    internal class ResponsiblPerson
+    public class ResponsiblPerson
     {
+        public int ID { get; set; }
         public string personFIO { get; set; }
         public string personPost { get; set; }
         public string personDocument  { get; set; }

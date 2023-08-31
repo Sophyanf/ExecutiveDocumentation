@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ExecutiveDocumentation.Models
 {
-    public class ProjectForObject
+    public class WorkTipe
     {
-        public int ID { get; set; }
-        public string Shifr { get; set; }
-        //public Kontragent projektСompany;
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
