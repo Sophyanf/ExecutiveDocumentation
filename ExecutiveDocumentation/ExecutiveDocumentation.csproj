@@ -97,7 +97,17 @@
     </ApplicationDefinition>
     <Compile Include="ActionCommand.cs" />
     <Compile Include="AppDbContext.cs" />
-    <Compile Include="DateThisProject.cs" />
+    <Compile Include="Controllers\DataObjectController.cs" />
+    <Compile Include="IDataObject.cs" />
+    <Compile Include="Migrations\202309031251271_Corr1.cs" />
+    <Compile Include="Migrations\202309031251271_Corr1.designer.cs">
+      <DependentUpon>202309031251271_Corr1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309061325576_Corr2Links.cs" />
+    <Compile Include="Migrations\202309061325576_Corr2Links.designer.cs">
+      <DependentUpon>202309061325576_Corr2Links.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToStringData.cs" />
     <Compile Include="ExcelHelper.cs" />
     <Compile Include="Migrations\202308301430182_Init.cs" />
     <Compile Include="Migrations\202308301430182_Init.designer.cs">
@@ -112,15 +122,23 @@
     <Compile Include="Models\WorksTipeObg.cs" />
     <Compile Include="Models\WorkTipe.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\AddNewObject.xaml.cs">
-      <DependentUpon>AddNewObject.xaml</DependentUpon>
+    <Compile Include="ViewModels\ObjectAddViewVM.cs" />
+    <Compile Include="Views\ObjectAddView.xaml.cs">
+      <DependentUpon>ObjectAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KontragentAddView.xaml.cs">
+      <DependentUpon>KontragentAddView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <Page Include="Views\AddNewObject.xaml">
+    <Page Include="Views\ObjectAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KontragentAddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,6 +182,12 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202308301430182_Init.resx">
       <DependentUpon>202308301430182_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309031251271_Corr1.resx">
+      <DependentUpon>202309031251271_Corr1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309061325576_Corr2Links.resx">
+      <DependentUpon>202309061325576_Corr2Links.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

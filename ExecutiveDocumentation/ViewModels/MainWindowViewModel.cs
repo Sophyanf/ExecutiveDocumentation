@@ -15,7 +15,10 @@ namespace ExecutiveDocumentation.ViewModels
     {
         
 
-        List<AktHiddenWork> aktHiddenWorkForPrint = new List<AktHiddenWork>();
+        List<AktHiddenWork> aktHiddenWorkForPrint = new List<AktHiddenWork>(); 
+        public ActionCommand CloseAppCommand => new ActionCommand(x => Application.Current.Shutdown());
+        public ActionCommand WindowMinimizeCommand => new ActionCommand(x => Application.Current.MainWindow.WindowState = WindowState.Minimized);
+        public ActionCommand WindowMaximizeCommand => new ActionCommand(x => MaximizeCommand());
         public ActionCommand PrintDocumentCommand { get; set; }
         public ActionCommand LoadFromExcelCommand { get; set; }
 
@@ -70,6 +73,17 @@ namespace ExecutiveDocumentation.ViewModels
            ofd.ShowDialog();
            var helper = new ExcelHelper(ofd.FileName);
            helper.ProcessLoadFromExcel(aktHiddenWorkForPrint);
+        }
+        private void MaximizeCommand()
+        {
+            if (Application.Current.MainWindow.WindowState == WindowState.Normal)
+            {
+                Application.Current.MainWindow.WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                Application.Current.MainWindow.WindowState = WindowState.Normal;
+            }
         }
     }
 }

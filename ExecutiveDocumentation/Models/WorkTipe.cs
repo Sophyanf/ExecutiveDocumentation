@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ExecutiveDocumentation.Models
 {
-    public class WorkTipe
+    public class WorkTipe : IDataObject
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public ICollection<WorksTipeObg> WorksTipeObgObg { get; set; }
     }
 }

@@ -23,7 +23,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
-using Label = System.Windows.Controls.Label;
 
 namespace ExecutiveDocumentation.Views
 {
@@ -40,9 +39,10 @@ namespace ExecutiveDocumentation.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(DateThisProject.getNameOfMonth(new DateTime(2015, 01, 25)));
+            ObjectAddView addNewObject = new ObjectAddView();
+            addNewObject.ShowDialog();
         }
 
     }
-    }
+}
 

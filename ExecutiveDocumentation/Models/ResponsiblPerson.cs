@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExecutiveDocumentation.Models
 {
-    public class ResponsiblPerson
+    public class ResponsiblPerson : IDataObject
     {
         public int ID { get; set; }
         public string personFIO { get; set; }

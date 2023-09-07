@@ -2,7 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:fa="http://schemas.fontawesome.io/icons/"
                      >
-
+    <Style TargetType="{x:Type Window}">
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+  
+    
     <DataTemplate DataType="{x:Type Border}" x:Key="WindowBorderStyle">
         <Border DockPanel.Dock="Top">
             <Grid HorizontalAlignment="Stretch">
@@ -20,7 +24,7 @@
                            
                             >
                     <Button Width="20" Height="30"
-                            Command="{Binding WindowMinimizeCommand, ElementName=MainViewModel}"
+                            Command="{Binding WindowMinimizeCommand, ElementName=MainWindowViewModel}"
                             >
                         <Button.Template>
                             <ControlTemplate>
@@ -33,7 +37,7 @@
                     </Button>
                     <Button Width="20" Height="30"
                             Margin="10,0,0,0"
-                            Command="{Binding WindowMaximizeCommand, ElementName=MainViewModel}"
+                            Command="{Binding WindowMaximizeCommand, ElementName=MainWindowViewModel}"
                             >
                         <Button.Template>
                             <ControlTemplate>
@@ -44,7 +48,7 @@
                         </Button.Template>
                     </Button>
                     <Button Width="20" Height="30" Margin="10,0,10,0"
-                            Command="{Binding CloseAppCommand, ElementName=MainViewModel}"
+                            Command="{Binding CloseAppCommand, ElementName=MainWindowViewModel}"
                             >
                         <Button.Template>
                             <ControlTemplate>

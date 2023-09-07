@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ExecutiveDocumentation.Models
 {
-    public class ProjectForObject
+    public class ProjectForObject : IDataObject
     {
         public int ID { get; set; }
         public string Shifr { get; set; }
-        //public Kontragent projektСompany;
+        public Kontragent projektСompany { get; set; }
     }
 }

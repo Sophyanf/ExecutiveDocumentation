@@ -18,7 +18,9 @@ namespace ExecutiveDocumentation
         public DbSet<Kontragent> Kontragents { get; set; }
          public DbSet<ProjectForObject> ProjectForObjects { get; set; }
           public DbSet<ResponsiblPerson> ResponsiblPersons { get; set; }
-       
+        public DbSet<WorkTipe> WorkTipes { get; set; }
+        public DbSet<WorksTipeObg> WorksTipeObgs { get; set; }
+
     }
 }
 

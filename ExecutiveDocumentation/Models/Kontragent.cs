@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace ExecutiveDocumentation.Models
 {
-    public class Kontragent
+    public class Kontragent : IDataObject
     {
         public int ID { get; set; }
         public string KontragentName { get; set; }
         public string KontragentShortName { get; set; }
+        public string KontragentINN { get; set; }
         public string KontragentAdress { get; set; }
+        public ICollection<ConstructionObject> ConstructionObject { get; set; } = new List<ConstructionObject>();
+        public ICollection<ProjectForObject> ProjectForObject { get; set; } = new List<ProjectForObject>();
     }
 }
