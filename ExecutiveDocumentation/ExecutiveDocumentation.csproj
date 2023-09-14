@@ -74,6 +74,7 @@
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.118.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -107,6 +108,10 @@
     <Compile Include="Migrations\202309061325576_Corr2Links.designer.cs">
       <DependentUpon>202309061325576_Corr2Links.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309141355563_Corr3.cs" />
+    <Compile Include="Migrations\202309141355563_Corr3.designer.cs">
+      <DependentUpon>202309141355563_Corr3.cs</DependentUpon>
+    </Compile>
     <Compile Include="ToStringData.cs" />
     <Compile Include="ExcelHelper.cs" />
     <Compile Include="Migrations\202308301430182_Init.cs" />
@@ -121,6 +126,8 @@
     <Compile Include="Models\ResponsiblPerson.cs" />
     <Compile Include="Models\WorksTipeObg.cs" />
     <Compile Include="Models\WorkTipe.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\ProjectForObjectAddVM.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ObjectAddViewVM.cs" />
     <Compile Include="Views\ObjectAddView.xaml.cs">
@@ -129,11 +136,22 @@
     <Compile Include="Views\KontragentAddView.xaml.cs">
       <DependentUpon>KontragentAddView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProjectForObjectAddView.xaml.cs">
+      <DependentUpon>ProjectForObjectAddView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
+    <Page Include="Resources\FontStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\WindowBorderStyleOtersViews.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ObjectAddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -165,6 +183,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ProjectForObjectAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -188,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309061325576_Corr2Links.resx">
       <DependentUpon>202309061325576_Corr2Links.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309141355563_Corr3.resx">
+      <DependentUpon>202309141355563_Corr3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

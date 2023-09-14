@@ -1,13 +1,15 @@
 ﻿using ExecutiveDocumentation.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ExecutiveDocumentation.Controllers
 {
-    internal class DataObjectController
+    public class DataObjectController
     {
         private readonly AppDbContext _context;
       /*  public static string manufData = "manufacturer";
@@ -55,15 +57,41 @@ namespace ExecutiveDocumentation.Controllers
             }
         }
 
-        public async Task<List<Kontragent>> GetListKontragentAsync()          //Список категорий (по возможности заменить на GetDataProductAsync(string dataType) ))
+        public async Task<ObservableCollection<Kontragent>> GetListKontragentAsync()          //Список категорий (по возможности заменить на GetDataProductAsync(string dataType) ))
         {
-            List<Kontragent> result = null;
+            IQueryable<Kontragent> result = null;
+                await Task.Run(() =>
+                {
+                    result = _context.Kontragents;
+                });
+          
+                return new ObservableCollection<Kontragent>(result);
+        }
+
+        public async Task<ObservableCollection<ProjectForObject>> GetListProjectsAsync()          //Список категорий (по возможности заменить на GetDataProductAsync(string dataType) ))
+        {
+            IQueryable<ProjectForObject> result = null;
 
             await Task.Run(() =>
             {
-                result = _context.Kontragents.ToList();
+                result = _context.ProjectForObjects;
             });
-            return result;
+
+            return new ObservableCollection<ProjectForObject>(result);
+        }
+
+        public async Task<bool> AddProjectAsync(ProjectForObject project, Kontragent kontragent)  // Добавление продукта
+        {
+            try
+            {
+                _context.Kontragents.Include("ProjectForObjects").FirstOrDefault(c => c.ID == kontragent.ID).ProjectForObjects.Add(project);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

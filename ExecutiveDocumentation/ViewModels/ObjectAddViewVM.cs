@@ -1,7 +1,10 @@
 ﻿using ExecutiveDocumentation.Controllers;
 using ExecutiveDocumentation.Models;
+using ExecutiveDocumentation.Views;
+using Microsoft.Vbe.Interop;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,46 +15,47 @@ using System.Windows.Controls;
 
 namespace ExecutiveDocumentation.ViewModels
 {
-    internal class ObjectAddViewVM : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
-        private DataObjectController dataObj = DataObjectController.Instance;
-        public List<Kontragent> Kontragents { get; set; } = new List<Kontragent>();
-        public ActionCommand AddNewObject { get; set; }
+    public class ObjectAddViewVM : BaseViewModel { 
+        public ActionCommand AddNewProject { get; set; }
+        public ActionCommand DeleteProject { get; set; }
+        public ProjectForObject ProjectStr { get; set; }
+        private ObservableCollection<ProjectForObject> projects;
+        public ObservableCollection<ProjectForObject> Projects
+
+        {
+            get { return projects; }
+            set
+            {
+                projects = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ObjectAddViewVM()
         {
-            await loadObjectAddViewAsync();
-            AddNewObject = new ActionCommand(x => addNewObj());
+            AddNewProject = new ActionCommand(x => addNewProject());
+            Kontragents = new ObservableCollection<Kontragent>();
+            LoadKontragentsAsync();
+                   }
+
+        private void addNewProject()
+        {
+            ProjectForObjectAddView projectView = new ProjectForObjectAddView();
+            projectView.ShowDialog();
+            LoadProjectAsync();
+          //  ProjectStr = Projects.LastOrDefault();
         }
 
-
-        private async Task loadObjectAddViewAsync()
+        protected async void LoadProjectAsync()
         {
-            List<Kontragent> kontragentsList = await dataObj.GetListKontragentAsync();
-            Kontragents = kontragentsList;
+            await Task.Run(async () =>
+            {
+                Projects = await dataObj.GetListProjectsAsync();
+            });
         }
-
-        private async void addNewObj ()
+        private  void addNewObj ()
         {
-            /* ConstructionObject newObj = new ConstructionObject()
-             {
-                 ObjectName = tbName.Text,
-                 ObjectAdress = tbAdress.Text,
-                 StartDate = (DateTime)dpStart.SelectedDate,
-                 EndDate = (DateTime)dpFinish.SelectedDate,
-             };
-             await dataObj.AddDataObjAsync(newObj);
-             DialogResult = true;*/
-            await loadObjectAddViewAsync();
-            String str = "";
-            foreach (Kontragent kontragent in Kontragents) { str += kontragent.KontragentShortName + " "; }
-            MessageBox.Show(str);
-        }
-
-        public void OnPropertyChanged([CallerMemberName] string property = "")
-        {
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(property));
+           
         }
     }
 }

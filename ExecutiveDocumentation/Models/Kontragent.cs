@@ -13,7 +13,7 @@ namespace ExecutiveDocumentation.Models
         public string KontragentShortName { get; set; }
         public string KontragentINN { get; set; }
         public string KontragentAdress { get; set; }
-        public ICollection<ConstructionObject> ConstructionObject { get; set; } = new List<ConstructionObject>();
-        public ICollection<ProjectForObject> ProjectForObject { get; set; } = new List<ProjectForObject>();
+        public ICollection<ConstructionObject> ConstructionObjects { get; set; } = new List<ConstructionObject>();
+        public ICollection<ProjectForObject> ProjectForObjects { get; set; } = new List<ProjectForObject>();
     }
 }

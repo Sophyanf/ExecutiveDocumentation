@@ -11,5 +11,10 @@ namespace ExecutiveDocumentation.Models
         public int ID { get; set; }
         public string Shifr { get; set; }
         public Kontragent projektСompany { get; set; }
+
+        public override string ToString()
+        {
+            return "Шифр проекта - " + Shifr + " (" + projektСompany + ")";
+        }
     }
 }

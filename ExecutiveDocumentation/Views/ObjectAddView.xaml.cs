@@ -44,15 +44,5 @@ namespace ExecutiveDocumentation.Views
             await dataObj.AddDataObjAsync(newObj);
             DialogResult = true;
         }
-
-        private void kontragent_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (kontragent.SelectedIndex == 0)
-            {
-                KontragentAddView addNewKontragent = new KontragentAddView();
-                addNewKontragent.ShowDialog();
-            }
-        }
-        
     }
 }

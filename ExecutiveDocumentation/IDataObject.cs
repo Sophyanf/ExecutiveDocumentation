@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExecutiveDocumentation
 {
-    internal interface IDataObject
+    public interface IDataObject
     {
     }
 }
