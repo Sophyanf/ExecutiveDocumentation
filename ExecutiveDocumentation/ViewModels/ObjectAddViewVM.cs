@@ -18,7 +18,17 @@ namespace ExecutiveDocumentation.ViewModels
     public class ObjectAddViewVM : BaseViewModel { 
         public ActionCommand AddNewProject { get; set; }
         public ActionCommand DeleteProject { get; set; }
-        public ProjectForObject ProjectStr { get; set; }
+
+        public ProjectForObject projectStr;
+        public ProjectForObject ProjectStr
+        {
+            get { return projectStr; }
+            set
+            {
+                projectStr = value;
+                OnPropertyChanged();
+            }
+        }
         private ObservableCollection<ProjectForObject> projects;
         public ObservableCollection<ProjectForObject> Projects
 
@@ -33,26 +43,39 @@ namespace ExecutiveDocumentation.ViewModels
 
         public ObjectAddViewVM()
         {
+            
             AddNewProject = new ActionCommand(x => addNewProject());
             Kontragents = new ObservableCollection<Kontragent>();
             LoadKontragentsAsync();
-                   }
+           
+        }
 
-        private void addNewProject()
+        private async void addNewProject()
         {
+
             ProjectForObjectAddView projectView = new ProjectForObjectAddView();
             projectView.ShowDialog();
-            LoadProjectAsync();
-          //  ProjectStr = Projects.LastOrDefault();
+            await LoadProjectAsync();
+            // foreach (var project in Projects) { MessageBox.Show(project.ToString() + " !!!!!"); }
+            ProjectStr = new ProjectForObject();
+            ProjectStr = Projects.LastOrDefault();
+            MessageBox.Show(ProjectStr.ToString());
+
         }
 
-        protected async void LoadProjectAsync()
+        protected async Task LoadProjectAsync()
         {
+            Projects = new ObservableCollection<ProjectForObject>();
             await Task.Run(async () =>
             {
+                
                 Projects = await dataObj.GetListProjectsAsync();
+               
             });
+            //foreach (var project in Projects) { MessageBox.Show(project.ToString() + " check"); }
         }
+
+       
         private  void addNewObj ()
         {
            

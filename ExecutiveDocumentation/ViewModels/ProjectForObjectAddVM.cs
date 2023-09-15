@@ -41,7 +41,7 @@ namespace ExecutiveDocumentation.ViewModels
             LoadKontragentsAsync();
         }
 
-        private async Task addNewProjectDBAsync()
+        private async void addNewProjectDBAsync()
         {
             ProjectForObject newProduct = new ProjectForObject()// создаем новый проект из текстбоксов и пр.
             {
@@ -50,14 +50,17 @@ namespace ExecutiveDocumentation.ViewModels
             };
 
            
-            var res = await dataObj.AddProjectAsync(newProduct, ProjectKontragent);
-
-            if (res == false)
+            bool rez = false;
+            await Task.Run(async () =>
+            {
+                rez = await dataObj.AddProjectAsync(newProduct, ProjectKontragent);
+            });
+            if (rez == false)
             {
                 MessageBox.Show("Ошибка!!! Проверьте продукт");
                 return;
             }
-
+            else Application.Current.Windows.OfType<Window>().SingleOrDefault(y => y.IsActive).Close();
         }
     }
 }

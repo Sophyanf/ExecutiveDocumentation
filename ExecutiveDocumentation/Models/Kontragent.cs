@@ -15,5 +15,10 @@ namespace ExecutiveDocumentation.Models
         public string KontragentAdress { get; set; }
         public ICollection<ConstructionObject> ConstructionObjects { get; set; } = new List<ConstructionObject>();
         public ICollection<ProjectForObject> ProjectForObjects { get; set; } = new List<ProjectForObject>();
+
+        public override string ToString()
+        {
+            return KontragentShortName;
+        }
     }
 }
