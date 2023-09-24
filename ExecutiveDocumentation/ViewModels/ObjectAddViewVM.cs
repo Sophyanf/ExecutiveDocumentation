@@ -19,7 +19,7 @@ namespace ExecutiveDocumentation.ViewModels
         public ActionCommand AddNewProject { get; set; }
         public ActionCommand DeleteProject { get; set; }
 
-        public ProjectForObject projectStr;
+         ProjectForObject projectStr = null;
         public ProjectForObject ProjectStr
         {
             get { return projectStr; }
@@ -28,7 +28,7 @@ namespace ExecutiveDocumentation.ViewModels
                 projectStr = value;
                 OnPropertyChanged();
             }
-        }
+        } 
         private ObservableCollection<ProjectForObject> projects;
         public ObservableCollection<ProjectForObject> Projects
 
@@ -41,18 +41,31 @@ namespace ExecutiveDocumentation.ViewModels
             }
         }
 
-        public ObjectAddViewVM()
+        bool flag;
+
+        public bool Flag
+        {
+
+            get { return flag; }
+            set
+            {
+                flag = value;
+                OnPropertyChanged();
+            }
+        }
+public ObjectAddViewVM()
         {
             
             AddNewProject = new ActionCommand(x => addNewProject());
             Kontragents = new ObservableCollection<Kontragent>();
             LoadKontragentsAsync();
-           
+            Flag = true;
+
         }
 
         private async void addNewProject()
         {
-
+            Flag = false;
             ProjectForObjectAddView projectView = new ProjectForObjectAddView();
             projectView.ShowDialog();
             await LoadProjectAsync();
@@ -60,7 +73,6 @@ namespace ExecutiveDocumentation.ViewModels
             ProjectStr = new ProjectForObject();
             ProjectStr = Projects.LastOrDefault();
             MessageBox.Show(ProjectStr.ToString());
-
         }
 
         protected async Task LoadProjectAsync()
@@ -75,6 +87,7 @@ namespace ExecutiveDocumentation.ViewModels
             //foreach (var project in Projects) { MessageBox.Show(project.ToString() + " check"); }
         }
 
+      
        
         private  void addNewObj ()
         {

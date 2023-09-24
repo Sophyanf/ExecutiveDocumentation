@@ -130,6 +130,9 @@
     <Compile Include="ViewModels\ProjectForObjectAddVM.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ObjectAddViewVM.cs" />
+    <Compile Include="Views\ListOfWorksView.xaml.cs">
+      <DependentUpon>ListOfWorksView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ObjectAddView.xaml.cs">
       <DependentUpon>ObjectAddView.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\WindowBorderStyleOtersViews.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListOfWorksView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

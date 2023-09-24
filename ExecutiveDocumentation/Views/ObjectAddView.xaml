@@ -135,21 +135,24 @@
                     HorizontalAlignment="Left"
                     Content="Данные проекта" 
                 />
-                <Button Background ="Transparent"  
-                       Width="30"
+
+                <Button Background="Transparent"
+                       Width="250"
                     Height="30"
                         Foreground="Blue"
                         FontStyle="Oblique"
                         ContentStringFormat="Underline"
                         HorizontalAlignment="Left"  
                         VerticalAlignment="Center"
-                        Command="{Binding AddNewProject}">
+                        Command="{Binding AddNewProject}"
+                        >
+                    
                         <Button.Style>
                             <Style TargetType="Button">
-                                <Setter Property="Background" Value="Green"></Setter>
+                                <Setter Property="Content" Value="{Binding ProjectStr}" />
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ProjectStr}" Value="null">
-                                        <Setter Property="Background" Value="Red" />
+                                    <DataTrigger Binding="{Binding Flag}" Value="true">
+                                        <Setter Property="Content" Value="Введите данные проекта" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
