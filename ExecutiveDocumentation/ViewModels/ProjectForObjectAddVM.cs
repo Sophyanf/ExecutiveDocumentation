@@ -15,23 +15,23 @@ namespace ExecutiveDocumentation.ViewModels
     public class ProjectForObjectAddVM : BaseViewModel
     {
         public ActionCommand AddNewProjectDB { get; set; }
-        private String _projectShifr;
+        private String projectShifr;
         public String ProjectShifr
         {
-            get { return _projectShifr; }
+            get { return projectShifr; }
             set 
             { 
-                _projectShifr = value;
+                projectShifr = value;
                 OnPropertyChanged();
             }
         }
-        private Kontragent _projectKontragent;
+        private Kontragent projectKontragent;
         public Kontragent ProjectKontragent
         {
-            get { return _projectKontragent; }
+            get { return projectKontragent; }
             set
             {
-                _projectKontragent = value;
+                projectKontragent = value;
                 OnPropertyChanged();
             }
         }
@@ -45,7 +45,7 @@ namespace ExecutiveDocumentation.ViewModels
         {
             ProjectForObject newProduct = new ProjectForObject()// создаем новый проект из текстбоксов и пр.
             {
-                Shifr = _projectShifr,
+                Shifr = projectShifr,
                 projektСompany = ProjectKontragent
             };
 
@@ -57,7 +57,7 @@ namespace ExecutiveDocumentation.ViewModels
             });
             if (rez == false)
             {
-                MessageBox.Show("Ошибка!!! Проверьте продукт");
+                MessageBox.Show("Ошибка!!! Проверьте проект");
                 return;
             }
             else Application.Current.Windows.OfType<Window>().SingleOrDefault(y => y.IsActive).Close();

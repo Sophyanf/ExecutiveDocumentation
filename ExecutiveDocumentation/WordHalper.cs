@@ -1,17 +1,8 @@
-﻿using Microsoft.Office.Core;
-using Microsoft.Office.Interop.Word;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using static System.Net.WebRequestMethods;
 using File = System.IO.File;
 using Word = Microsoft.Office.Interop.Word;
 

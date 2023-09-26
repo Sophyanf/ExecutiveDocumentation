@@ -17,6 +17,7 @@ namespace ExecutiveDocumentation.ViewModels
 {
     public class ObjectAddViewVM : BaseViewModel { 
         public ActionCommand AddNewProject { get; set; }
+        public ActionCommand AddWorksList{ get; set; }
         public ActionCommand DeleteProject { get; set; }
 
          ProjectForObject projectStr = null;
@@ -41,35 +42,69 @@ namespace ExecutiveDocumentation.ViewModels
             }
         }
 
-        bool flag;
+        private ObservableCollection<ProjectForObject> worksList;
+        public ObservableCollection<ProjectForObject> WorksList
 
-        public bool Flag
         {
-
-            get { return flag; }
+            get { return worksList; }
             set
             {
-                flag = value;
+                worksList = value;
                 OnPropertyChanged();
             }
         }
-public ObjectAddViewVM()
+
+        bool flagProject;
+        public bool FlagProject
+        {
+
+            get { return flagProject; }
+            set
+            {
+                flagProject = value;
+                OnPropertyChanged();
+            }
+        }
+        bool flagListOfWorks;
+        public bool FlagListOfWorks
+        {
+
+            get { return flagListOfWorks; }
+            set
+            {
+                flagListOfWorks = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObjectAddViewVM()
         {
             
             AddNewProject = new ActionCommand(x => addNewProject());
+            AddWorksList = new ActionCommand(x => addWorksList());ghbn
             Kontragents = new ObservableCollection<Kontragent>();
             LoadKontragentsAsync();
-            Flag = true;
-
+            FlagProject = true;
+            FlagListOfWorks = true;
         }
 
         private async void addNewProject()
         {
-            Flag = false;
+            FlagProject = false;
             ProjectForObjectAddView projectView = new ProjectForObjectAddView();
             projectView.ShowDialog();
             await LoadProjectAsync();
-            // foreach (var project in Projects) { MessageBox.Show(project.ToString() + " !!!!!"); }
+            ProjectStr = new ProjectForObject();
+            ProjectStr = Projects.LastOrDefault();
+            MessageBox.Show(ProjectStr.ToString());
+        }
+
+        private async void addWorksList()
+        {
+            FlagProject = false;
+            ListOfWorksView worksView = new ListOfWorksView();
+            worksView.ShowDialog();
+            await LoadProjectAsync();
             ProjectStr = new ProjectForObject();
             ProjectStr = Projects.LastOrDefault();
             MessageBox.Show(ProjectStr.ToString());
@@ -80,15 +115,21 @@ public ObjectAddViewVM()
             Projects = new ObservableCollection<ProjectForObject>();
             await Task.Run(async () =>
             {
-                
                 Projects = await dataObj.GetListProjectsAsync();
-               
             });
-            //foreach (var project in Projects) { MessageBox.Show(project.ToString() + " check"); }
         }
 
-      
-       
+        protected async Task LoadWorksAsync()
+        {
+            Projects = new ObservableCollection<ProjectForObject>();
+            await Task.Run(async () =>
+            {
+
+                Projects = await dataObj.GetListProjectsAsync();
+
+            });
+        }
+
         private  void addNewObj ()
         {
            

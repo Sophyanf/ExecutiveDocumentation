@@ -165,16 +165,34 @@
                     HorizontalAlignment="Left"
                     Content="Виды работ" 
                 />
-                <ListBox
-                    Width="350" Height="80"
-                    HorizontalAlignment="Left"
-                />
-                 </StackPanel>
+                    <Button Background="Transparent"
+                       Width="250"
+                    Height="30"
+                        Foreground="Blue"
+                        FontStyle="Oblique"
+                        ContentStringFormat="Underline"
+                        HorizontalAlignment="Left"  
+                        VerticalAlignment="Center"
+                        Command="{Binding AddNewProject}"
+                        >
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Content" Value="{Binding ProjectStr}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding FlagProject}" Value="true">
+                                        <Setter Property="Content" Value="Выберите работы для данного объекта" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
                 
                 <Button
                     Content="Загрузить" 
                     Margin="30,50,30,0"
-                    Width="80"
+                    Width="90"
                     Height ="40" Command="{Binding AddNewObject}"
                 />
 

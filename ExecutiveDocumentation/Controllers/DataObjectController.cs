@@ -46,6 +46,11 @@ namespace ExecutiveDocumentation.Controllers
                     var dataObj = obj as ProjectForObject;
                     _context.ProjectForObjects.Add(dataObj);
                 }
+                else if (obj is WorkTipe)
+                {
+                    var dataObj = obj as WorkTipe;
+                    _context.WorkTipes.Add(dataObj);
+                }
 
                 await _context.SaveChangesAsync();
                 return true;
