@@ -70,6 +70,7 @@
                     Content="Наименование объекта" 
                 />
                 <TextBox Name ="tbName"
+                         Text="{Binding ObjName}"
                     Width="350"
                     Height="25"
                     HorizontalAlignment="Right"
@@ -85,6 +86,7 @@
                 <TextBox Name ="tbAdress"
                     Width="350"
                     Height="25"
+                         Text="{Binding ObjAdress}"
                     HorizontalAlignment="Right"
                     BorderBrush="Aqua"
                 />
@@ -99,11 +101,24 @@
                 <ComboBox Name ="kontragent" Width="250"
                     ItemsSource="{Binding Kontragents}" 
                           DisplayMemberPath="KontragentShortName"
+                          SelectedItem="{Binding SelectKontragent}"
                     Height="25"
                     HorizontalAlignment="Left"
                     BorderBrush="Aqua"  >
                 </ComboBox>
-                        </StackPanel>
+
+                    <Button 
+                       Width="90"
+                        Height="30"
+                        Margin="30,0"
+                        HorizontalAlignment="Center"  
+                        VerticalAlignment="Center"
+                        Content="Создать"
+                        Command="{Binding AddNewKontragent }"
+                        
+                        >
+                    </Button>
+                </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Height="40">
                     <Label Width="350"
@@ -111,6 +126,7 @@
                     Content="Дата начала строительства" 
                 />
                 <DatePicker Name ="dpStart"
+                            SelectedDate="{Binding StartDate}"
                     Width="200"
                     Height="30"
                     HorizontalAlignment="Left"
@@ -124,6 +140,8 @@
                     Content="Дата окончания строительства" 
                 />
                 <DatePicker Name ="dpFinish"
+                            SelectedDate="{Binding EndDate}"
+                            
                     Width="200"
                     Height="30"
                     HorizontalAlignment="Left"
@@ -151,7 +169,7 @@
                             <Style TargetType="Button">
                                 <Setter Property="Content" Value="{Binding ProjectStr}" />
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Flag}" Value="true">
+                                    <DataTrigger Binding="{Binding FlagProject }" Value="true">
                                         <Setter Property="Content" Value="Введите данные проекта" />
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -160,7 +178,21 @@
                     </Button>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Height="40">
+                <StackPanel Orientation="Horizontal" Height="70"  HorizontalAlignment="Center"   >
+                    <Button 
+                       Width="150"
+                        Height="30"
+                        
+                        HorizontalAlignment="Center"  
+                        VerticalAlignment="Top"
+                        Content="Создать объект"
+                        Command="{Binding AddNewConctrObject}"
+                        
+                        >
+                    </Button>
+                </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Height="40">
                     <Label Width="350"
                     HorizontalAlignment="Left"
                     Content="Виды работ" 
@@ -173,14 +205,14 @@
                         ContentStringFormat="Underline"
                         HorizontalAlignment="Left"  
                         VerticalAlignment="Center"
-                        Command="{Binding AddNewProject}"
+                        Command="{Binding AddNewObj}"
                         >
 
                         <Button.Style>
                             <Style TargetType="Button">
-                                <Setter Property="Content" Value="{Binding ProjectStr}" />
+                                <Setter Property="Content" Value="{}" />
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding FlagProject}" Value="true">
+                                    <DataTrigger Binding="{Binding FlagListOfWorks}" Value="true">
                                         <Setter Property="Content" Value="Выберите работы для данного объекта" />
                                     </DataTrigger>
                                 </Style.Triggers>

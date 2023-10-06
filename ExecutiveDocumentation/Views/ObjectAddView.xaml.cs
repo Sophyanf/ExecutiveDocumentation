@@ -30,19 +30,5 @@ namespace ExecutiveDocumentation.Views
             InitializeComponent();
             
         }
-
-
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ConstructionObject newObj = new ConstructionObject()
-            {
-                ObjectName = tbName.Text,
-                ObjectAdress = tbAdress.Text,
-                StartDate = (DateTime)dpStart.SelectedDate,
-                EndDate = (DateTime)dpFinish.SelectedDate,
-            };
-            await dataObj.AddDataObjAsync(newObj);
-            DialogResult = true;
-        }
     }
 }

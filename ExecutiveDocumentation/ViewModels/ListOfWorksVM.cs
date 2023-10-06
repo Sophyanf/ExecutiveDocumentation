@@ -12,7 +12,7 @@ namespace ExecutiveDocumentation.ViewModels
 
         public ListOfWorksVM()
         {
-            AddNewTypeOfWork = new ActionCommand(x => addNewTypeOfWork());
+           // AddNewTypeOfWork = new ActionCommand(x => addNewTypeOfWork());
         }
 
         private void addNewTypeOfWorkBu()

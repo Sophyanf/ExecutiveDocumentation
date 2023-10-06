@@ -6,29 +6,65 @@
         xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
         mc:Ignorable="d"
           WindowStyle="None"
-        
+        xmlns:vm="clr-namespace:ExecutiveDocumentation.ViewModels"
+        d:DataContext="{d:DesignInstance Type=vm:KontragentAddVM}"
         AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip"
         Title="KontragentAddView" Height="450" Width="800">
-    <DockPanel >
-        <ContentControl DockPanel.Dock="Top"
-                        ContentTemplate="{StaticResource ResourceKey=WindowBorderStyle}"
-                        />
 
-        <StackPanel Orientation="Horizontal" >
+    <Window.DataContext>
+        <!--<vm:MainWindowViewModel x:Name="MainWindowViewModel"></vm:MainWindowViewModel>-->
+        <vm:KontragentAddVM x:Name="KontragentAddVM"></vm:KontragentAddVM>
+    </Window.DataContext>
+
+    <DockPanel >
+        <Border Background="#B0E0E6" DockPanel.Dock="Top">
+            <Grid HorizontalAlignment="Stretch">
+                <Label Content="Сдача объекта"
+                       Foreground="Blue"
+                       FontWeight="Bold"
+                       />
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            >
+                    <Button Style="{StaticResource ResourceKey=MinimizeBtnStyle}"
+                            Command="{Binding WindowMinimizeCommand}"
+                            />
+                    <Button Style="{StaticResource ResourceKey=MaximizeBtnStyle}"
+                            Command="{Binding WindowMaximizeCommand}"
+                            />
+                    <Button Style="{StaticResource ResourceKey=CloseWindowBtnStyle}"
+                            Command="{Binding CloseWindowCommand}"
+                            />
+                </StackPanel>
+            </Grid>
+        </Border>
+     
+
+        <StackPanel Orientation="Vertical" >
             <StackPanel.Background>
                 <ImageBrush ImageSource="{StaticResource ResourceKey=WindBackgraund}" />
             </StackPanel.Background>
 
-            <UniformGrid Rows="8" Columns="2"  
+
+            <Label
+                Height="50"
+                HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                    Content="Введите данные контрагента" 
+                />
+
+            <UniformGrid Rows="5" Columns="2"  
                         
                          HorizontalAlignment="Left">
 
+               
                 <Label
                      VerticalAlignment="Center"
                     Content="Наименование контрагента" 
                 />
-                <TextBox Name ="tbName"
+                <TextBox 
+                    Text="{Binding KontragentName}"
                     Width="350"
                     Height="25"
                     HorizontalAlignment="Right"
@@ -38,7 +74,9 @@
                      VerticalAlignment="Center"
                     Content="Краткое наименование контрагента" 
                 />
-                <TextBox Name ="tbShortName"
+                <TextBox
+                          Text="{Binding KontragentShortName}"
+                    Margin="0, 15"
                     Width="350"
                     Height="25"
                     HorizontalAlignment="Right"
@@ -48,7 +86,8 @@
                      VerticalAlignment="Center"
                     Content="Адрес" 
                 />
-                <TextBox Name ="tbAdress"
+                <TextBox
+                     Text="{Binding KontragentAdress}"
                     Width="350"
                     Height="25"
                     HorizontalAlignment="Right"
@@ -59,20 +98,35 @@
                      VerticalAlignment="Center"
                     Content="ИНН" 
                 />
-                <TextBox Name ="tbINN"
+                <TextBox 
                          PreviewTextInput="NumberValidationTextBox"
+                     Text="{Binding KontragenINN}"
                     Width="350"
                     Height="25"
                     HorizontalAlignment="Right"
                     BorderBrush="Aqua"
                 />
-                <Button
-                    Content="Загрузить" 
-                    Width="80"
-                    Height ="40" Click="Button_Click" 
+                <Label
+                     VerticalAlignment="Center"
+                    Content="ОГРН" 
+                />
+                <TextBox 
+                    PreviewTextInput="NumberValidationTextBox"
+                     Text="{Binding KontragenOGRN}"
+                    Width="350"
+                    Height="25"
+                    HorizontalAlignment="Right"
+                    BorderBrush="Aqua"
                 />
 
             </UniformGrid>
+            <Button
+               Margin="0, 15"
+                    Content="Создать" 
+                    Width="80"
+                    Height ="40" 
+                    Command="{Binding AddNewKontragent}"
+                />
         </StackPanel>
     </DockPanel>
 </Window>

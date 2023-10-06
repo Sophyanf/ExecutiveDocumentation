@@ -25,16 +25,7 @@ namespace ExecutiveDocumentation.ViewModels
                 OnPropertyChanged();
             }
         }
-        private Kontragent projectKontragent;
-        public Kontragent ProjectKontragent
-        {
-            get { return projectKontragent; }
-            set
-            {
-                projectKontragent = value;
-                OnPropertyChanged();
-            }
-        }
+       
         public ProjectForObjectAddVM ()
         {
             AddNewProjectDB  = new ActionCommand(x => addNewProjectDBAsync());
@@ -46,14 +37,14 @@ namespace ExecutiveDocumentation.ViewModels
             ProjectForObject newProduct = new ProjectForObject()// создаем новый проект из текстбоксов и пр.
             {
                 Shifr = projectShifr,
-                projektСompany = ProjectKontragent
+                ProjektСompany = SelectKontragent  // создан в BaseViewModel
             };
 
            
             bool rez = false;
             await Task.Run(async () =>
             {
-                rez = await dataObj.AddProjectAsync(newProduct, ProjectKontragent);
+                rez = await dataObj.AddProjectAsync(newProduct, SelectKontragent);
             });
             if (rez == false)
             {

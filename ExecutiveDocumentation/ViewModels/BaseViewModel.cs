@@ -1,5 +1,6 @@
 ﻿using ExecutiveDocumentation.Controllers;
 using ExecutiveDocumentation.Models;
+using ExecutiveDocumentation.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,35 +16,13 @@ namespace ExecutiveDocumentation.ViewModels
 
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         protected DataObjectController dataObj = DataObjectController.Instance;
-        protected virtual void OnPropertyChanged([CallerMemberName] string property = "")
-        {
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(property));
-        }
-        protected virtual void UpdateValue<T>(ref T field, T value, [CallerMemberName] string property = "")
-        {
-            field = value;
-            OnPropertyChanged(property);
-        }
 
+        #region Commands
         public virtual ActionCommand CloseAppCommand => new ActionCommand(x => Application.Current.Shutdown());
         public virtual ActionCommand CloseWindowCommand => new ActionCommand(x => Application.Current.Windows.OfType<Window>().SingleOrDefault(y => y.IsActive).Close());
         public virtual ActionCommand WindowMinimizeCommand => new ActionCommand(x => MinimizeWindow());
         public virtual ActionCommand WindowMaximizeCommand => new ActionCommand(x => MaximizeWindow());
-
-        private ObservableCollection<Kontragent> kontragents;
-        public ObservableCollection<Kontragent> Kontragents
-
-        {
-            get { return kontragents; }
-            set
-            {
-                kontragents = value;
-                OnPropertyChanged();
-            }
-        }
 
         protected virtual void MaximizeWindow()
         {
@@ -61,7 +40,36 @@ namespace ExecutiveDocumentation.ViewModels
         {
             Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive).WindowState = WindowState.Minimized;
         }
+        #endregion
 
+        #region PropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+
+       
+        protected virtual void OnPropertyChanged([CallerMemberName] string property = "")
+        {
+            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(property));
+        }
+        protected virtual void UpdateValue<T>(ref T field, T value, [CallerMemberName] string property = "")
+        {
+            field = value;
+            OnPropertyChanged(property);
+        }
+        #endregion
+       
+        #region Kontragents
+        private ObservableCollection<Kontragent> kontragents;
+        public ObservableCollection<Kontragent> Kontragents
+
+        {
+            get { return kontragents; }
+            set
+            {
+                kontragents = value;
+                OnPropertyChanged();
+            }
+        }
+        
         protected async void LoadKontragentsAsync()
         {
             await Task.Run(async () =>
@@ -69,5 +77,43 @@ namespace ExecutiveDocumentation.ViewModels
                 Kontragents = await dataObj.GetListKontragentAsync();
             });
         }
+
+       
+        #endregion
+
+        ConstructionObject thisObj = null;
+        public ConstructionObject ThisObj
+        {
+            get { return thisObj; }
+            set
+            {
+                thisObj = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Kontragent selectKontragent;
+        public Kontragent SelectKontragent
+        {
+            get { return selectKontragent; }
+            set
+            {
+                selectKontragent = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ActionCommand AddNewKontragent { get; set; }
+        public BaseViewModel ()
+        {
+            AddNewKontragent = new ActionCommand(x => AddNewKontragentView());
+        }
+        private void AddNewKontragentView()
+        {
+            KontragentAddView kontragentAddView = new KontragentAddView();
+            kontragentAddView.ShowDialog();
+            LoadKontragentsAsync();
+        }
+
     }
 }

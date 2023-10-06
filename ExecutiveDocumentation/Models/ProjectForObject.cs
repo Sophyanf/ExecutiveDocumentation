@@ -10,12 +10,12 @@ namespace ExecutiveDocumentation.Models
     {
         public int ID { get; set; }
         public string Shifr { get; set; }
-        public Kontragent projektСompany { get; set; }
+        public Kontragent ProjektСompany { get; set; }
 
         public override string ToString()
         {
             if (this != null)
-                return "Шифр проекта - " + Shifr + " (" + projektСompany + ")";
+                return "Шифр проекта - " + Shifr + " (" + ProjektСompany + ")";
             else return "Данные проекта";
         }
     }

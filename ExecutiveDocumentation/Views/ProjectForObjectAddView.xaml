@@ -81,7 +81,7 @@
                     <ComboBox Name ="kontragent" Width="200"
                     ItemsSource="{Binding Kontragents}" 
                           DisplayMemberPath="KontragentShortName"
-                              SelectedItem="{Binding ProjectKontragent}"
+                              SelectedItem="{Binding SelectKontragent}"
                     Height="25"
                     HorizontalAlignment="Left"
                     BorderBrush="Aqua"  >

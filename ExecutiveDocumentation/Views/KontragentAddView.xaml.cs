@@ -46,25 +46,6 @@ namespace ExecutiveDocumentation.Views
             return reg.IsMatch(text);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            AddKontragentAsync();
-            DialogResult = true;
-        }
-        private async Task AddKontragentAsync ()
-        {
-            Kontragent kontragent = new Kontragent()
-            {
-                KontragentName = tbName.Text,
-                KontragentShortName = tbShortName.Text,
-                KontragentAdress = tbAdress.Text,
-                KontragentINN = tbINN.Text
-            };
-
-            if (await dataObj.AddDataObjAsync(kontragent) == false)
-            {
-                MessageBox.Show("Ошибка!!! Проверьте категорию");
-            }
-        }
+       
     }
 }
