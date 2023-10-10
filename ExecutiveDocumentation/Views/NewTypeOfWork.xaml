@@ -57,6 +57,8 @@
                      Height="70" 
                      Margin="70,10,0,10" 
                     FontSize="14"
+                    Text="{Binding WorkName}"
+                    TextWrapping="Wrap"
                     >
                     </TextBox  >
 
@@ -66,7 +68,8 @@
                      Height="30" 
                      Margin="70,20,0,10" 
                     FontSize="14"
-                    Content="Добавить">
+                    Content="Добавить"
+                        Command="{Binding AddNewTypeOfWorkDB}">
                     </Button  >
                     
                 </StackPanel >

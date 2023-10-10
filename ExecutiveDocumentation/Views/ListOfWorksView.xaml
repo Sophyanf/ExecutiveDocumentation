@@ -4,8 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
-        mc:Ignorable="d"
+         xmlns:vm="clr-namespace:ExecutiveDocumentation.ViewModels"
+         d:DataContext="{d:DesignInstance Type=vm:ListOfWorksVM}"
+         mc:Ignorable="d"
+         WindowStyle="None"
         Title="ListOfWorksView" Height="450" Width="800">
+
+    <Window.DataContext>
+        <vm:ListOfWorksVM x:Name="ListOfWorksVM"></vm:ListOfWorksVM>
+    </Window.DataContext>
 
     <DockPanel>
         <Border Background="#B0E0E6" DockPanel.Dock="Top">
@@ -43,7 +50,9 @@
                      Height="30" 
                      Margin="65,130,0,10" 
                     FontSize="14"
-                    Content="Добавить">
+                    Content="Добавить"
+                        Command="{Binding AddNewTypeOfWork}">
+                        
                     </Button  >
 
                     <Button

@@ -16,7 +16,6 @@
 
 
     <Window.DataContext>
-        <!--<vm:MainWindowViewModel x:Name="MainWindowViewModel"></vm:MainWindowViewModel>-->
         <vm:ObjectAddViewVM x:Name="ObjectAddViewVM"></vm:ObjectAddViewVM>
     </Window.DataContext>
 
@@ -205,7 +204,7 @@
                         ContentStringFormat="Underline"
                         HorizontalAlignment="Left"  
                         VerticalAlignment="Center"
-                        Command="{Binding AddNewObj}"
+                        Command="{Binding AddWorksList}"
                         >
 
                         <Button.Style>

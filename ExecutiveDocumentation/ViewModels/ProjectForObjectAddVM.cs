@@ -44,7 +44,7 @@ namespace ExecutiveDocumentation.ViewModels
             bool rez = false;
             await Task.Run(async () =>
             {
-                rez = await dataObj.AddProjectAsync(newProduct, SelectKontragent);
+                rez = await dataObj.AddObjectPropertiesAsync(newProduct, SelectKontragent);
             });
             if (rez == false)
             {

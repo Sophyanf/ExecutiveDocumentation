@@ -28,6 +28,8 @@ namespace ExecutiveDocumentation.ViewModels
 
         private async void AddWorksListAsinc()
         {
+            ListOfWorksView listOfWorksView = new ListOfWorksView();
+            listOfWorksView.ShowDialog();
 
         }
 
@@ -117,7 +119,7 @@ namespace ExecutiveDocumentation.ViewModels
         }
 
       
-
+        
 
 
         protected async Task LoadWorksAsync()

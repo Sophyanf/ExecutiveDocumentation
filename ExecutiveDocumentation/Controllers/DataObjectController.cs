@@ -85,7 +85,7 @@ namespace ExecutiveDocumentation.Controllers
             return new ObservableCollection<ProjectForObject>(result);
         }
 
-        public async Task<bool> AddProjectAsync(IDataObject obj, Kontragent kontragent)  // Добавление проекта
+        public async Task<bool> AddObjectPropertiesAsync(IDataObject obj, Kontragent kontragent)  // Добавление проекта
         {
             try
             {
@@ -119,7 +119,7 @@ namespace ExecutiveDocumentation.Controllers
             }
         }
 
-        public async Task<bool> AddObjectAsync(ConstructionObject obj, Kontragent kontragent)  // Добавление проекта
+        public async Task<bool> AddObjectAsync(ConstructionObject obj, Kontragent kontragent)  // Добавление объекта
         {
             try
             {
