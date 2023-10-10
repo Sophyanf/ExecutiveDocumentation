@@ -2,6 +2,7 @@
 using ExecutiveDocumentation.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,20 +14,37 @@ namespace ExecutiveDocumentation.ViewModels
     {
         public ActionCommand AddNewTypeOfWork { get; set; }
         public ActionCommand AddNewTypeOfWorkDB { get; set; }
+        public ActionCommand SelectTypeOfWork { get; set; }
 
 
         public ListOfWorksVM()
         {
-           AddNewTypeOfWork = new ActionCommand(x => AddNewTypeOfWorkButton());
+            SelectWorks =  dataObj.GetListWorks();
+            AddNewTypeOfWork = new ActionCommand(x => AddNewTypeOfWorkButtonAsync());
             AddNewTypeOfWorkDB = new ActionCommand(x => AddNewTypeOfWorkToDBAsync());
+            SelectTypeOfWork = new ActionCommand(x => creatWorksList());
+        
         }
 
-        public void AddNewTypeOfWorkButton()
+        private ObservableCollection<IDataObject> selectWorks;
+        public ObservableCollection<IDataObject> SelectWorks
+
         {
+            get { return selectWorks; }
+            set
+            {
+                selectWorks = value;
+                OnPropertyChanged();
+            }
+        }
+        public async Task AddNewTypeOfWorkButtonAsync()
+        {
+            
             NewTypeOfWork newTypeOfWork = new NewTypeOfWork();
             newTypeOfWork.ShowDialog();
         }
 
+        
         private String workName;
         public String WorkName
         {
@@ -34,6 +52,17 @@ namespace ExecutiveDocumentation.ViewModels
             set
             {
                 workName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private List<int> isSelectList;
+        public List<int> IsSelectList
+        {
+            get { return isSelectList; }
+            set
+            {
+                isSelectList = value;
                 OnPropertyChanged();
             }
         }
@@ -54,5 +83,10 @@ namespace ExecutiveDocumentation.ViewModels
             }
             else Application.Current.Windows.OfType<Window>().SingleOrDefault(y => y.IsActive).Close();
         }
+
+        public void creatWorksList ()
+        {
+            MessageBox.Show(IsSelectList.ToString());
+        } 
     }
 }

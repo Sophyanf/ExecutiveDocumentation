@@ -16,7 +16,7 @@ namespace ExecutiveDocumentation.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public ProjectForObject ProjectForObject   { get; set; }
-        public  WorkType?  ListOfWorks { get; set; }
+        public WorksTypeObg?  ListOfWorks { get; set; }
 
     }
 }

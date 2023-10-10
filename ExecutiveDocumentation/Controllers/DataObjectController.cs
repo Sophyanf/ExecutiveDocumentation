@@ -73,7 +73,7 @@ namespace ExecutiveDocumentation.Controllers
                 return new ObservableCollection<Kontragent>(result);
         }
 
-        public async Task<ObservableCollection<ProjectForObject>> GetListProjectsAsync()          //Список категорий (по возможности заменить на GetDataProductAsync(string dataType) ))
+        public async Task<ObservableCollection<ProjectForObject>> GetListProjectsAsync()          //Список проектов (по возможности заменить на GetDataProductAsync(string dataType) ))
         {
             IQueryable<ProjectForObject> result = null;
 
@@ -85,7 +85,26 @@ namespace ExecutiveDocumentation.Controllers
             return new ObservableCollection<ProjectForObject>(result);
         }
 
-        public async Task<bool> AddObjectPropertiesAsync(IDataObject obj, Kontragent kontragent)  // Добавление проекта
+        public async Task<ObservableCollection<IDataObject>> GetListWorksAsync()
+        {         //Список работ
+            IQueryable<IDataObject> result = null;
+
+            await Task.Run(() =>
+            {
+                result = _context.WorkTypes;
+            });
+
+            return new ObservableCollection<IDataObject>(result);
+        }
+
+        public ObservableCollection<IDataObject> GetListWorks() {         //Список работ
+            IQueryable<IDataObject> result = null;
+                result = _context.WorkTypes;
+
+            return new ObservableCollection<IDataObject>(result);
+        }
+
+        public async Task<bool> AddObjectPropertiesAsync(IDataObject obj, Kontragent kontragent)  // Добавление свойств в базу данных
         {
             try
             {

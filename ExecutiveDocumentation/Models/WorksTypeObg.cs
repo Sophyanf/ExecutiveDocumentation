@@ -9,7 +9,7 @@ namespace ExecutiveDocumentation.Models
     public class WorksTypeObg : IDataObject
     {
         public int Id { get; set; }
-        public WorkType WorksList { get; set; }
+        public ICollection<WorksTypeObg>? WorksTypeObgList { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 

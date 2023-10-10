@@ -75,11 +75,22 @@
                     <Label Content="Виды работ" 
                            Margin="30, 10,0,0" 
                            />
-                <ListBox Background="#B0E0E6"
+                <ListBox 
+                         ItemsSource="{Binding SelectWorks}"
+                    Background="#B0E0E6"
                      Width="600"
                      Height="310"
                      Margin="30, 10,0,0" >
-                </ListBox>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <CheckBox IsChecked="{Binding Path=IsSelected}" Content="{Binding Path=Name}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate
+                            >
+                       
+                    </ListBox>
                  </StackPanel>  
             </StackPanel> 
         </StackPanel>
