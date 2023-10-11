@@ -100,6 +100,7 @@
     </ApplicationDefinition>
     <Compile Include="ActionCommand.cs" />
     <Compile Include="AppDbContext.cs" />
+    <Compile Include="CheckingWorks.cs" />
     <Compile Include="Controllers\DataObjectController.cs" />
     <Compile Include="IDataObject.cs" />
     <Compile Include="Migrations\202309290941471_Init.cs" />

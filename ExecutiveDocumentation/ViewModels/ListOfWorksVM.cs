@@ -19,13 +19,14 @@ namespace ExecutiveDocumentation.ViewModels
 
         public ListOfWorksVM()
         {
-            SelectWorks =  dataObj.GetListWorks();
+            fillListBox();
+            
             AddNewTypeOfWork = new ActionCommand(x => AddNewTypeOfWorkButtonAsync());
             AddNewTypeOfWorkDB = new ActionCommand(x => AddNewTypeOfWorkToDBAsync());
             SelectTypeOfWork = new ActionCommand(x => creatWorksList());
         
         }
-
+        ObservableCollection <IDataObject> checkingWorks { get; set; }
         private ObservableCollection<IDataObject> selectWorks;
         public ObservableCollection<IDataObject> SelectWorks
 
@@ -37,6 +38,17 @@ namespace ExecutiveDocumentation.ViewModels
                 OnPropertyChanged();
             }
         }
+        private void fillListBox()
+        {
+            checkingWorks = dataObj.GetListWorks();
+            if (SelectWorks == null) { SelectWorks = new ObservableCollection<IDataObject>(); }
+            foreach (var work in checkingWorks)
+            {
+                CheckingWorks checkingWorks = new CheckingWorks() { Object = work as WorkType };
+                SelectWorks.Add(checkingWorks);
+            }
+        }
+
         public async Task AddNewTypeOfWorkButtonAsync()
         {
             
@@ -56,16 +68,7 @@ namespace ExecutiveDocumentation.ViewModels
             }
         }
 
-        private List<int> isSelectList;
-        public List<int> IsSelectList
-        {
-            get { return isSelectList; }
-            set
-            {
-                isSelectList = value;
-                OnPropertyChanged();
-            }
-        }
+       
         public async void AddNewTypeOfWorkToDBAsync()
         {
             WorkType workType = new WorkType();
@@ -86,7 +89,10 @@ namespace ExecutiveDocumentation.ViewModels
 
         public void creatWorksList ()
         {
-            MessageBox.Show(IsSelectList.ToString());
+            MessageBox.Show("Check");
+            foreach (CheckingWorks work in SelectWorks) {
+                if (work.CheckObj == true) MessageBox.Show(work.Object.Name.ToString());
+            }
         } 
     }
 }

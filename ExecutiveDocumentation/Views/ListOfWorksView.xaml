@@ -67,7 +67,9 @@
                      Height="45" 
                     Margin="45,90,0,20" 
                     FontSize="14"
-                    Content="Выбрать">
+                    Content="Выбрать"
+                        Command="{Binding SelectTypeOfWork}">
+                        
                     </Button  >
                 </StackPanel >
                 
@@ -76,7 +78,8 @@
                            Margin="30, 10,0,0" 
                            />
                 <ListBox 
-                         ItemsSource="{Binding SelectWorks}"
+                    SelectionMode="Extended"
+                         ItemsSource="{Binding SelectWorks }"
                     Background="#B0E0E6"
                      Width="600"
                      Height="310"
@@ -84,7 +87,7 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <CheckBox IsChecked="{Binding Path=IsSelected}" Content="{Binding Path=Name}" />
+                                    <CheckBox IsChecked="{Binding Path=CheckObj}" Content="{Binding Path=Object.Name}" />
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate
