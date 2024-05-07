@@ -112,6 +112,7 @@
       <DependentUpon>202310101309249_Corr1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="OthersClasses\TypeOfWork.cs" />
     <Compile Include="ToStringData.cs" />
     <Compile Include="ExcelHelper.cs" />
     <Compile Include="Models\AktHiddenWork.cs" />
@@ -123,12 +124,18 @@
     <Compile Include="Models\WorkType.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ListOfWorksVM.cs" />
+    <Compile Include="ViewModels\MainViewVM.cs" />
     <Compile Include="ViewModels\ProjectForObjectAddVM.cs" />
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ObjectAddViewVM.cs" />
     <Compile Include="ViewModels\KontragentAddVM.cs" />
+    <Compile Include="Views\AddNewListWorksObj.xaml.cs">
+      <DependentUpon>AddNewListWorksObj.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ListOfWorksView.xaml.cs">
       <DependentUpon>ListOfWorksView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NewTypeOfWork.xaml.cs">
       <DependentUpon>NewTypeOfWork.xaml</DependentUpon>
@@ -155,7 +162,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddNewListWorksObj.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ListOfWorksView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,21 +186,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="WordHalper.cs" />
-    <Compile Include="Views\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
     <Page Include="Resources\WindBackgraund.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

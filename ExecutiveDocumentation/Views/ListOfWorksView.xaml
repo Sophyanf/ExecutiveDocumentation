@@ -78,20 +78,12 @@
                            Margin="30, 10,0,0" 
                            />
                 <ListBox 
-                    SelectionMode="Extended"
+                    
                          ItemsSource="{Binding SelectWorks }"
                     Background="#B0E0E6"
                      Width="600"
                      Height="310"
                      Margin="30, 10,0,0" >
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <CheckBox IsChecked="{Binding Path=CheckObj}" Content="{Binding Path=Object.Name}" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate
-                            >
                        
                     </ListBox>
                  </StackPanel>  

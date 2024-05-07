@@ -1,4 +1,5 @@
 ﻿using ExecutiveDocumentation.Models;
+using ExecutiveDocumentation.OthersClasses;
 using ExecutiveDocumentation.Views;
 using System;
 using System.Collections.Generic;
@@ -19,16 +20,16 @@ namespace ExecutiveDocumentation.ViewModels
 
         public ListOfWorksVM()
         {
-            fillListBox();
+            //fillListBox();
             
             AddNewTypeOfWork = new ActionCommand(x => AddNewTypeOfWorkButtonAsync());
-            AddNewTypeOfWorkDB = new ActionCommand(x => AddNewTypeOfWorkToDBAsync());
+            AddNewTypeOfWork = new ActionCommand(x => AddNewTypeOfWorkToDB());
             SelectTypeOfWork = new ActionCommand(x => creatWorksList());
         
         }
         ObservableCollection <IDataObject> checkingWorks { get; set; }
-        private ObservableCollection<IDataObject> selectWorks;
-        public ObservableCollection<IDataObject> SelectWorks
+        private ObservableCollection<TypeOfWork> selectWorks;
+        public ObservableCollection<TypeOfWork> SelectWorks
 
         {
             get { return selectWorks; }
@@ -40,16 +41,16 @@ namespace ExecutiveDocumentation.ViewModels
         }
         private void fillListBox()
         {
-            checkingWorks = dataObj.GetListWorks();
+         /*   checkingWorks = dataObj.GetListWorks();
             if (SelectWorks == null) { SelectWorks = new ObservableCollection<IDataObject>(); }
             foreach (var work in checkingWorks)
             {
                 CheckingWorks checkingWorks = new CheckingWorks() { Object = work as WorkType };
                 SelectWorks.Add(checkingWorks);
-            }
+            }*/
         }
 
-        public async Task AddNewTypeOfWorkButtonAsync()
+        public void AddNewTypeOfWorkButtonAsync()
         {
             
             NewTypeOfWork newTypeOfWork = new NewTypeOfWork();
@@ -68,31 +69,35 @@ namespace ExecutiveDocumentation.ViewModels
             }
         }
 
-       
-        public async void AddNewTypeOfWorkToDBAsync()
+        private DateTime dateOfWork;
+        public DateTime DateOfWork
         {
-            WorkType workType = new WorkType();
-            workType.Name = WorkName;
-
-            bool rez = false;
-            await Task.Run(async () =>
+            get { return dateOfWork; }
+            set
             {
-                rez = await dataObj.AddObjectPropertiesAsync(workType, SelectKontragent);
-            });
-            if (rez == false)
-            {
-                MessageBox.Show("Ошибка!!! Проверьте проект");
-                return;
+                dateOfWork = value;
+                OnPropertyChanged();
             }
-            else Application.Current.Windows.OfType<Window>().SingleOrDefault(y => y.IsActive).Close();
+        }
+
+
+        public void AddNewTypeOfWorkToDB()
+        {
+            if (selectWorks == null) { selectWorks = new ObservableCollection<TypeOfWork>(); }
+            TypeOfWork typeOfWork = new TypeOfWork()
+            {
+                Name = workName,
+                DateOfWork = dateOfWork
+            };
+            selectWorks.Add(typeOfWork);
         }
 
         public void creatWorksList ()
         {
-            MessageBox.Show("Check");
+            /*MessageBox.Show("Check");
             foreach (CheckingWorks work in SelectWorks) {
                 if (work.CheckObj == true) MessageBox.Show(work.Object.Name.ToString());
-            }
+            }*/
         } 
     }
 }

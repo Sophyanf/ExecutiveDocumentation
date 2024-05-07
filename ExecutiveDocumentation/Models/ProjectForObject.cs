@@ -14,9 +14,8 @@ namespace ExecutiveDocumentation.Models
 
         public override string ToString()
         {
-            if (this != null)
-                return "Шифр проекта - " + Shifr + " (" + ProjektСompany + ")";
-            else return "Данные проекта";
+           
+                return  Shifr;
         }
     }
 }

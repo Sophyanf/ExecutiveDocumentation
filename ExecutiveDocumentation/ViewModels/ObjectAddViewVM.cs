@@ -23,22 +23,16 @@ namespace ExecutiveDocumentation.ViewModels
         #region Commands
         public ActionCommand AddNewProject { get; set; } 
         public ActionCommand AddNewConctrObject { get; set; }
-        public ActionCommand AddWorksList{ get; set; }
+       
         public ActionCommand DeleteProject { get; set; }
 
-        private async void AddWorksListAsinc()
-        {
-            ListOfWorksView listOfWorksView = new ListOfWorksView();
-            listOfWorksView.ShowDialog();
-
-        }
-
+      
         private async void AddNewProjectAsinc()
         {
             FlagProject = false;
             ProjectForObjectAddView projectView = new ProjectForObjectAddView();
             projectView.ShowDialog();
-            await LoadProjectAsync();
+            //await LoadProjectAsync();
             ProjectStr = new ProjectForObject();
             ProjectStr = Projects.LastOrDefault();
             MessageBox.Show(ProjectStr.ToString());
@@ -80,21 +74,14 @@ namespace ExecutiveDocumentation.ViewModels
                 OnPropertyChanged();
             }
         }
-        protected async Task LoadProjectAsync()
-        {
-            Projects = new ObservableCollection<ProjectForObject>();
-            await Task.Run(async () =>
-            {
-                Projects = await dataObj.GetListProjectsAsync();
-            });
-        }
+       
 
 
         #endregion
 
         #region WorksList
-        private ObservableCollection<ProjectForObject> worksList;
-        public ObservableCollection<ProjectForObject> WorksList
+        private ObservableCollection<WorksTypeObg> worksList;
+        public ObservableCollection<WorksTypeObg> WorksList
 
         {
             get { return worksList; }
@@ -119,19 +106,8 @@ namespace ExecutiveDocumentation.ViewModels
         }
 
       
-        
 
-
-        protected async Task LoadWorksAsync()
-        {
-            Projects = new ObservableCollection<ProjectForObject>();
-            await Task.Run(async () =>
-            {
-
-                Projects = await dataObj.GetListProjectsAsync();
-
-            });
-        }
+      
         #endregion
 
         #region ObgectProperties
@@ -151,12 +127,13 @@ namespace ExecutiveDocumentation.ViewModels
         {
             
             AddNewProject = new ActionCommand(x => AddNewProjectAsinc());
-            AddWorksList = new ActionCommand(x => AddWorksListAsinc());
             AddNewConctrObject = new ActionCommand(x => addNewObj());
-            Kontragents = new ObservableCollection<Kontragent>();
-            LoadKontragentsAsync();
+            //Kontragents = new ObservableCollection<Kontragent>();
+            //LoadKontragentsAsync();
             FlagProject = true;
             FlagListOfWorks = true;
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now;
         }
 
         
@@ -172,13 +149,6 @@ namespace ExecutiveDocumentation.ViewModels
                 ProjectForObject = ProjectStr,
                 StartDate = StartDate,
                 EndDate = EndDate,
-               /* ListOfWorks = new WorkType()
-                {
-                    Name = "Работы",
-                    WorksTypeObg = null,
-
-                }*/
-
             };
 
 

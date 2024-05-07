@@ -1,0 +1,136 @@
+﻿<Window x:Class="ExecutiveDocumentation.Views.AddNewListWorksObj"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
+        mc:Ignorable="d"
+        Title="AddNewListWorksObj" Height="450" Width="800">
+    <DockPanel>
+        <Border Background="#B0E0E6" DockPanel.Dock="Top">
+            <Grid HorizontalAlignment="Stretch">
+                <Label Content="Сдача объекта"
+                   Foreground="Blue"
+                   FontWeight="Bold"
+                   />
+                <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        >
+                    <Button Style="{StaticResource ResourceKey=MinimizeBtnStyle}"
+                        Command="{Binding WindowMinimizeCommand}"
+                        />
+                    <Button Style="{StaticResource ResourceKey=MaximizeBtnStyle}"
+                        Command="{Binding WindowMaximizeCommand}"
+                        />
+                    <Button Style="{StaticResource ResourceKey=CloseWindowBtnStyle}"
+                        Command="{Binding CloseWindowCommand}"
+                        />
+                </StackPanel>
+            </Grid>
+        </Border>
+        <StackPanel Orientation="Horizontal" Width="800" >
+
+            <StackPanel.Background>
+                <ImageBrush ImageSource="{StaticResource ResourceKey=WindBackgraund}" />
+            </StackPanel.Background>
+
+
+            <StackPanel Orientation="Horizontal" >
+               
+
+                <StackPanel Orientation="Vertical" >
+                    <Label Content="Виды работ" 
+                       Margin="220, 10,0,0" 
+                       />
+                    <ListBox 
+                        SelectionMode="Extended"
+                        ItemsSource="{Binding SelectWorks }"
+                        Background="#B0E0E6"
+                         Width="350"
+                         Height="310"
+                         Margin="110, 15,0,0" > 
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <CheckBox IsChecked="{Binding Path=CheckObj}" Content="{Binding Path=Object.Name}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate
+                        >
+                    </ListBox>
+                </StackPanel>
+                    
+                <StackPanel Orientation="Vertical" >
+                    <Label Content="Характеристики" 
+                       Margin="80, 10,0,0" 
+                       />
+
+
+                    <StackPanel Orientation="Vertical" Height="60"  Margin="30, 10,0,0" >
+                        <Label Width="350"
+                            Height="30"
+                            HorizontalAlignment="Left"
+                            Content="Дата начала" 
+                        />
+                        <DatePicker Name ="dpStart"
+                            SelectedDate="{Binding StartDate}"
+                            Width="150"
+                            Height="30"
+                            HorizontalAlignment="Left"
+                        />
+                        </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Height="60" Margin="30, 0,0,0">
+                        <Label 
+                            Width="150"
+                            Height="30"
+                            HorizontalAlignment="Left"
+                            Content="Дата окончания" 
+                    />
+                        <DatePicker 
+                            SelectedDate="{Binding EndDate}"
+                            Width="150"
+                            Height="30"
+                            HorizontalAlignment="Left"
+                />
+                        </StackPanel>
+
+                    <CheckBox
+                        Margin="30, 20,0,0"
+                        Content="Акт скрытых работ"
+                          Width="250"
+                          Height="30"
+                          HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        />  
+                    <StackPanel Orientation="Vertical" Height="60"  Margin="30, 0,0,0" >
+                        <Label Width="350"
+                             Height="30"
+                             HorizontalAlignment="Left"
+                             Content="ПЭ начало" 
+                         />
+                        <TextBox
+                             Text="{Binding StartDate}"
+                             Width="150"
+                             Height="30"
+                             HorizontalAlignment="Left"
+                         /> 
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Height="60"  Margin="30, 0,0,0" >
+                        <Label Width="350"
+                        Height="30"
+                        HorizontalAlignment="Left"
+                        Content="ПЭ окончание" 
+                        />
+                        <TextBox
+                        Text="{Binding StartDate}"
+                        Width="150"
+                        Height="30"
+                        HorizontalAlignment="Left"
+                      />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</Window>

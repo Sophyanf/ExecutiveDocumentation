@@ -13,7 +13,7 @@
         Title="KontragentAddView" Height="450" Width="800">
 
     <Window.DataContext>
-        <!--<vm:MainWindowViewModel x:Name="MainWindowViewModel"></vm:MainWindowViewModel>-->
+      
         <vm:KontragentAddVM x:Name="KontragentAddVM"></vm:KontragentAddVM>
     </Window.DataContext>
 

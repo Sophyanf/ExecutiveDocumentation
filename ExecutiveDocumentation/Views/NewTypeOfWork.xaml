@@ -8,7 +8,7 @@
         xmlns:vm="clr-namespace:ExecutiveDocumentation.ViewModels"
          d:DataContext="{d:DesignInstance Type=vm:ListOfWorksVM}"
          WindowStyle="None"
-        Title="NewTypeOfWork" Height="250" Width="400">
+        Title="NewTypeOfWork" Height="300" Width="400">
 
     <Window.DataContext>
         <!--<vm:MainWindowViewModel x:Name="MainWindowViewModel"></vm:MainWindowViewModel>-->
@@ -56,21 +56,39 @@
                      Width="280"
                      Height="70" 
                      Margin="70,10,0,10" 
-                    FontSize="14"
+                    FontSize="12"
                     Text="{Binding WorkName}"
                     TextWrapping="Wrap"
                     >
                     </TextBox  >
 
-                    <Button
-                        HorizontalAlignment="Left"
-                        Width="80"
-                     Height="30" 
-                     Margin="70,20,0,10" 
+                <Label 
+                    Content="Введите дату"
+                    Height="30" 
+                    Margin="70,0,0,0" 
+                    FontSize="12"
+                >  
+                </Label  >
+
+                <DatePicker
+                    HorizontalAlignment="Left"
+                    Margin="70,0,0,0" 
+                    Width="180"
+                    Height="30" 
+                    FontSize="12"
+                    SelectedDate="{Binding DateOfWork}"
+                >
+                </DatePicker>
+
+                <Button
+                    HorizontalAlignment="Left"
+                    Width="80"
+                    Height="30" 
+                    Margin="70,30,0,10" 
                     FontSize="14"
                     Content="Добавить"
-                        Command="{Binding AddNewTypeOfWorkDB}">
-                    </Button  >
+                    Command="{Binding AddNewTypeOfWork}">
+                </Button  >
                     
                 </StackPanel >
 

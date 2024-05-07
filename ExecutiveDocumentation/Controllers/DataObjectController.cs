@@ -62,27 +62,39 @@ namespace ExecutiveDocumentation.Controllers
             }
         }
 
-        public async Task<ObservableCollection<Kontragent>> GetListKontragentAsync()          //Список категорий (по возможности заменить на GetDataProductAsync(string dataType) ))
+        public async Task <ObservableCollection<Kontragent>> GetListKontragentAsync()          //Список категорий (по возможности заменить на GetDataProductAsync(string dataType) ))
         {
             IQueryable<Kontragent> result = null;
-                await Task.Run(() =>
-                {
+              
                     result = _context.Kontragents;
-                });
           
                 return new ObservableCollection<Kontragent>(result);
         }
 
-        public async Task<ObservableCollection<ProjectForObject>> GetListProjectsAsync()          //Список проектов (по возможности заменить на GetDataProductAsync(string dataType) ))
+
+        public async Task<List<ConstructionObject>> GetListConstructionObjectsAsync()          //Список объектов
         {
-            IQueryable<ProjectForObject> result = null;
+            IEnumerable<ConstructionObject> result = null;
+                await Task.Run(() =>
+                {
+                    result = _context.ConstructionObjects.ToList();
+                });
+          
+                return (List<ConstructionObject>)result;
+        }
+       
+
+        public async Task<List<ProjectForObject>> GetListProjectsAsync()          //Список проектов (по возможности заменить на GetDataProductAsync(string dataType) ))
+        {
+            IEnumerable<ProjectForObject> result = null;
 
             await Task.Run(() =>
             {
-                result = _context.ProjectForObjects;
+                result = _context.ProjectForObjects.Include("ConstructionObjects").ToList();
             });
 
-            return new ObservableCollection<ProjectForObject>(result);
+            return 
+               ((List<ProjectForObject>)result);
         }
 
         public async Task<ObservableCollection<IDataObject>> GetListWorksAsync()

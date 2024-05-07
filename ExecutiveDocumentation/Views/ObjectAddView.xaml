@@ -62,13 +62,25 @@
                 />
 
                 <StackPanel Orientation="Horizontal" Height="40">
-                <Label
+
+                   
+                    <Label
                     Width="350"
                     HorizontalAlignment="Left"
                      VerticalAlignment="Center"
                     Content="Наименование объекта" 
                 />
-                <TextBox Name ="tbName"
+                  
+<ComboBox Name ="kontragent" Width="200"
+ItemsSource="{Binding Kontragents}" 
+      DisplayMemberPath="KontragentShortName"
+          SelectedItem="{Binding SelectKontragent}"
+Height="25"
+HorizontalAlignment="Left"
+BorderBrush="Aqua"  >
+
+                        </ComboBox>
+                        <TextBox Name ="tbName"
                          Text="{Binding ObjName}"
                     Width="350"
                     Height="25"
@@ -97,14 +109,15 @@
                     HorizontalAlignment="Left"
                     Content="Заказчик" 
                 />
-                <ComboBox Name ="kontragent" Width="250"
+                <ComboBox Width="250"
                     ItemsSource="{Binding Kontragents}" 
-                          DisplayMemberPath="KontragentShortName"
+                          DisplayMemberPath="KontragentName"
                           SelectedItem="{Binding SelectKontragent}"
                     Height="25"
                     HorizontalAlignment="Left"
-                    BorderBrush="Aqua"  >
-                </ComboBox>
+                    BorderBrush="Aqua"  
+                          SelectedIndex="0">
+                    </ComboBox>
 
                     <Button 
                        Width="90"
@@ -124,8 +137,8 @@
                     HorizontalAlignment="Left"
                     Content="Дата начала строительства" 
                 />
-                <DatePicker Name ="dpStart"
-                            SelectedDate="{Binding StartDate}"
+                <DatePicker 
+                    SelectedDate="{Binding StartDate}"
                     Width="200"
                     Height="30"
                     HorizontalAlignment="Left"

@@ -17,6 +17,7 @@ namespace ExecutiveDocumentation.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         protected DataObjectController dataObj = DataObjectController.Instance;
+        
 
         #region Commands
         public virtual ActionCommand CloseAppCommand => new ActionCommand(x => Application.Current.Shutdown());
@@ -72,13 +73,66 @@ namespace ExecutiveDocumentation.ViewModels
         
         protected async void LoadKontragentsAsync()
         {
-            await Task.Run(async () =>
-            {
-                Kontragents = await dataObj.GetListKontragentAsync();
-            });
+            Kontragents =  await dataObj.GetListKontragentAsync();
         }
 
-       
+        #endregion
+
+        #region Objects
+        private ObservableCollection<ConstructionObject> objectsList;
+        public ObservableCollection<ConstructionObject> ObjectsList
+
+        {
+            get { return objectsList; }
+            set
+            {
+                objectsList = value;
+                OnPropertyChanged(); 
+            }
+        }
+
+        protected async void LoadObjects()
+        {
+            try
+            {
+                await Task.Run(async () =>
+                {
+                    ObjectsList = new ObservableCollection<ConstructionObject>(await dataObj.GetListConstructionObjectsAsync());
+                });
+            }
+            catch (Exception ex) { }
+               
+           
+        }
+        #endregion
+
+        #region Projects
+        private ObservableCollection<ProjectForObject> projectsList;
+        public ObservableCollection<ProjectForObject> ProjectsList
+
+        {
+            get { return projectsList; }
+            set
+            {
+                projectsList = value;
+                OnPropertyChanged();
+            }
+        }
+        protected async void LoadProjects()
+        {
+            try
+            {
+                await Task.Run(async () =>
+                {
+                    ProjectsList = new ObservableCollection<ProjectForObject>(await dataObj.GetListProjectsAsync());
+                });
+
+            }
+            catch (Exception)
+            {
+            }
+        }
+
         #endregion
 
         ConstructionObject thisObj = null;
@@ -88,6 +142,17 @@ namespace ExecutiveDocumentation.ViewModels
             set
             {
                 thisObj = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ConstructionObject selectObject;
+        public ConstructionObject SelectObject
+        {
+            get { return selectObject; }
+            set
+            {
+                selectObject = value;
                 OnPropertyChanged();
             }
         }
