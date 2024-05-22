@@ -7,10 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                
-                <ResourceDictionary Source="Resources/WindowBorderStyle.xaml"></ResourceDictionary>
-
                 <ResourceDictionary Source="Resources/WindowBorderStyleOtersViews.xaml"></ResourceDictionary>
-                <ResourceDictionary Source="Resources/WindBackgraund.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Resources/FontStyle.xaml"></ResourceDictionary>
 
             </ResourceDictionary.MergedDictionaries>

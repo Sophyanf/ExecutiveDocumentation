@@ -29,7 +29,7 @@ namespace ExecutiveDocumentation.ViewModels
         public ProjectForObjectAddVM ()
         {
             AddNewProjectDB  = new ActionCommand(x => addNewProjectDBAsync());
-            LoadKontragentsAsync();
+            LoadKontragents();
         }
 
         private async void addNewProjectDBAsync()

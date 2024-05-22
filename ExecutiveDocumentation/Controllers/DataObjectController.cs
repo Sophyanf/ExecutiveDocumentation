@@ -62,7 +62,7 @@ namespace ExecutiveDocumentation.Controllers
             }
         }
 
-        public async Task <ObservableCollection<Kontragent>> GetListKontragentAsync()          //Список категорий (по возможности заменить на GetDataProductAsync(string dataType) ))
+        public ObservableCollection<Kontragent> GetListKontragent()          //Список категорий (по возможности заменить на GetDataProductAsync(string dataType) ))
         {
             IQueryable<Kontragent> result = null;
               
@@ -71,6 +71,14 @@ namespace ExecutiveDocumentation.Controllers
                 return new ObservableCollection<Kontragent>(result);
         }
 
+        public Kontragent GetObjectKontragent(ConstructionObject constructionObject)          //Получить контрагента конкретного объекта
+        {
+            Kontragent result = null;
+
+            result = _context.Kontragents.Include("ConstructionObjects").FirstOrDefault(k => k.ConstructionObjects.Where(co => co.ID == constructionObject.ID).Any());
+
+            return result;
+        }
 
         public async Task<List<ConstructionObject>> GetListConstructionObjectsAsync()          //Список объектов
         {

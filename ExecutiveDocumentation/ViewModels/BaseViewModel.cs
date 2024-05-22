@@ -71,9 +71,9 @@ namespace ExecutiveDocumentation.ViewModels
             }
         }
         
-        protected async void LoadKontragentsAsync()
+        protected void LoadKontragents()
         {
-            Kontragents =  await dataObj.GetListKontragentAsync();
+            Kontragents =  dataObj.GetListKontragent();
         }
 
         #endregion
@@ -153,6 +153,7 @@ namespace ExecutiveDocumentation.ViewModels
             set
             {
                 selectObject = value;
+                selectKontragent = dataObj.GetObjectKontragent(selectObject);
                 OnPropertyChanged();
             }
         }
@@ -177,7 +178,7 @@ namespace ExecutiveDocumentation.ViewModels
         {
             KontragentAddView kontragentAddView = new KontragentAddView();
             kontragentAddView.ShowDialog();
-            LoadKontragentsAsync();
+            LoadKontragents();
         }
 
     }

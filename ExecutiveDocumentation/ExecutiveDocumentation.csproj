@@ -149,11 +149,6 @@
     <Compile Include="Views\ProjectForObjectAddView.xaml.cs">
       <DependentUpon>ProjectForObjectAddView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Resource1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource1.resx</DependentUpon>
-    </Compile>
     <Page Include="Resources\FontStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -191,14 +186,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="WordHalper.cs" />
-    <Page Include="Resources\WindBackgraund.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\WindowBorderStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\ProjectForObjectAddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -227,10 +214,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Resource1.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AktHiddenWorkData.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
