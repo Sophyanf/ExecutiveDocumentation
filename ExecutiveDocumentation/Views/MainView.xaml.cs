@@ -23,5 +23,15 @@ namespace ExecutiveDocumentation.Views
         {
             InitializeComponent();
         }
+
+        private void WindowCloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void OnDragMoveWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

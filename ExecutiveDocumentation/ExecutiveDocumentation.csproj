@@ -149,10 +149,6 @@
     <Compile Include="Views\ProjectForObjectAddView.xaml.cs">
       <DependentUpon>ProjectForObjectAddView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resources\FontStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Resources\WindowBorderStyleOtersViews.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -270,6 +266,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logoED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\fon1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
