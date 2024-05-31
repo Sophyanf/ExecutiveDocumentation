@@ -271,6 +271,9 @@
     <Resource Include="Resources\logoED.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\logoNGM.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\fon1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

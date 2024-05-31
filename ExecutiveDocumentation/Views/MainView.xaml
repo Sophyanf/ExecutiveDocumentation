@@ -10,7 +10,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
         Height="{Binding SystemParameters.PrimaryScreenHeight}" Width="{Binding SystemParameters.PrimaryScreenWidth}" 
         Style="{StaticResource ResourceKey=WindowStyle}"
          >
-  
+
 
     <Window.DataContext>
         <vm:MainViewVM x:Name="MainViewVM"></vm:MainViewVM>
@@ -22,13 +22,19 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
             <ColumnDefinition Width='Auto' />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Vertical"> 
-            <Border DockPanel.Dock="Top" Height="45" HorizontalAlignment="Right" Margin="0,10,10,0">
-           
-                 
-                    <StackPanel Orientation="Horizontal"
-                     HorizontalAlignment="Right"
-                     >
+        <StackPanel Orientation="Vertical"  HorizontalAlignment="Stretch">
+            
+            
+            <UniformGrid Margin="20,10,20,0" Rows="1" VerticalAlignment="Top"
+>
+                <Image Grid.Column="0" Source ="pack://application:,,,/Resources/logoNGM.png" 
+                   VerticalAlignment="Top"
+                   Width="150"  
+                   Height ="100"
+                   HorizontalAlignment="Left"/>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal"  HorizontalAlignment ="Right" VerticalAlignment="Top"
+     >
                     <Button Style="{StaticResource ResourceKey=MinimizeBtnStyle}"
                      Command="{Binding WindowMinimizeCommand}"
                      />
@@ -39,12 +45,8 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                      Command="{Binding CloseWindowCommand}"
                      />
                 </StackPanel>
-           
-        </Border>
-
-
-
-
+            </UniformGrid>
+            
             <StackPanel Orientation="Horizontal" Height="80"  Margin="0,20,20,0">
 
                 <Button
@@ -86,44 +88,44 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                           SelectedIndex="0">
                     </ListBox>
 
-               
-            </StackPanel>
 
-            <StackPanel Orientation="Vertical"   
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical"   
                         Margin="20, 0, 0,0"
                         >
-                <Label Content="Данные объекта" 
+                    <Label Content="Данные объекта" 
                    Height="45"/>
 
-                <TextBlock 
+                    <TextBlock 
                     Text="{Binding SelectObject.ObjectName}"
                      TextWrapping="Wrap" 
                     Height="50" Width="400"/>
 
-                <StackPanel Orientation="Horizontal" 
+                    <StackPanel Orientation="Horizontal" 
                            >
-                    <Label Content="Заказчик" 
+                        <Label Content="Заказчик" 
                         Height="50"/>
-                    <TextBlock 
+                        <TextBlock 
                         Margin="20, 0, 0,0"
                          Text="{Binding SelectObject.Customer}"
                           TextWrapping="Wrap" 
-                         Height="50" />      
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" 
+                         Height="50" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" 
             >
-                    <Label Content="Шифр проекта" 
+                        <Label Content="Шифр проекта" 
          Height="50"/>
-                    <TextBlock 
+                        <TextBlock 
          Margin="20, 0, 0,0"
           Text="{Binding SelectObject.ProjectForObject}"
            TextWrapping="Wrap" 
           Height="50" />
+                    </StackPanel>
+
                 </StackPanel>
-
             </StackPanel>
-        </StackPanel>
 
-    </StackPanel>
-        </Grid>
+        </StackPanel>
+    </Grid>
 </Window>
