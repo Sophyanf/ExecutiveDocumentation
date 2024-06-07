@@ -5,11 +5,17 @@
              StartupUri="Views/MainView.xaml">
     <Application.Resources>
         <ResourceDictionary>
+           
+            
+           
             <ResourceDictionary.MergedDictionaries>
-               
-                <ResourceDictionary Source="Resources/WindowBorderStyleOtersViews.xaml"></ResourceDictionary>
+                
+
+                <ResourceDictionary Source="/Resources/WindowBorderStyleOtersViews.xaml"></ResourceDictionary>
 
             </ResourceDictionary.MergedDictionaries>
+           
+
         </ResourceDictionary>
         
     </Application.Resources>

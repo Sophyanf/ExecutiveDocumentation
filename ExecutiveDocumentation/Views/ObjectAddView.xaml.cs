@@ -30,5 +30,11 @@ namespace ExecutiveDocumentation.Views
             InitializeComponent();
             
         }
+       
+
+        private void OnDragMoveWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

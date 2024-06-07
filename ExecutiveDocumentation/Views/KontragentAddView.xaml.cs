@@ -25,7 +25,7 @@ namespace ExecutiveDocumentation.Views
     /// </summary>
     public partial class KontragentAddView : Window
     {
-        private DataObjectController dataObj = DataObjectController.Instance;
+        
         
         public KontragentAddView()
         {

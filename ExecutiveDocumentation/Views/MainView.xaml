@@ -7,8 +7,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:ExecutiveDocumentation.ViewModels"
         d:DataContext="{d:DesignInstance Type=vm:MainViewVM}"
-        Height="{Binding SystemParameters.PrimaryScreenHeight}" Width="{Binding SystemParameters.PrimaryScreenWidth}" 
-        Style="{StaticResource ResourceKey=WindowStyle}"
+        Style="{StaticResource ResourceKey=WindowStyle}" 
          >
 
 
@@ -16,25 +15,19 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
         <vm:MainViewVM x:Name="MainViewVM"></vm:MainViewVM>
     </Window.DataContext>
 
-    <Grid MouseDown='OnDragMoveWindow'>
+    <Grid Background="Transparent" MouseDown='OnDragMoveWindow'>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width='*' />
             <ColumnDefinition Width='Auto' />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Vertical"  HorizontalAlignment="Stretch">
+        <StackPanel Orientation="Vertical" Background="Transparent" Grid.RowSpan="2">
             
-            
-            <UniformGrid Margin="20,10,20,0" Rows="1" VerticalAlignment="Top"
->
-                <Image Grid.Column="0" Source ="pack://application:,,,/Resources/logoNGM.png" 
-                   VerticalAlignment="Top"
-                   Width="150"  
-                   Height ="100"
-                   HorizontalAlignment="Left"/>
-
-                <StackPanel Grid.Column="1" Orientation="Horizontal"  HorizontalAlignment ="Right" VerticalAlignment="Top"
-     >
+            <StackPanel  Margin="0,15,20,0" Orientation="Horizontal"  HorizontalAlignment ="Right" VerticalAlignment="Top">
                     <Button Style="{StaticResource ResourceKey=MinimizeBtnStyle}"
                      Command="{Binding WindowMinimizeCommand}"
                      />
@@ -44,35 +37,26 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                     <Button Style="{StaticResource ResourceKey=CloseWindowBtnStyle}"
                      Command="{Binding CloseWindowCommand}"
                      />
-                </StackPanel>
-            </UniformGrid>
-            
-            <StackPanel Orientation="Horizontal" Height="80"  Margin="0,20,20,0">
+            </StackPanel>
+           
 
+            <StackPanel Orientation="Horizontal" Height="50"  Margin="20,30,20,0" Background="White">
                 <Button
-                    Content="Создать объект" 
-                    Margin="20,20,10,0"
-                    Width="120"
-                    Height ="40" Command="{Binding AddNewObjectDB}"
+                   Content="Создать" 
+                   Command="{Binding AddNewObjectDB}"
                 />
 
                 <Button
                     Content="Не работает" 
-                    Margin="20,20,10,0"
-                    Width="100"
-                    Height ="40"  Command = "{Binding PrintDocumentCommand}"
+                    Command = "{Binding PrintDocumentCommand}"
                 />
                 <Button
                     Content="Не работает" 
-                    Margin="20,20,10,0"
-                    Width="100"
-                    Height ="40" Command = "{Binding LoadFromExcelCommand}"
+                   Command = "{Binding LoadFromExcelCommand}"
                 />
-
-
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin ="20, 10, 20 , 20" Background="Azure" >
+            <StackPanel Orientation="Horizontal" Margin ="20, 0, 20 , 20" Background="White" >
                 <StackPanel Orientation="Vertical"   >
                     <Label Content="Объект" 
                                Height="45"/>
