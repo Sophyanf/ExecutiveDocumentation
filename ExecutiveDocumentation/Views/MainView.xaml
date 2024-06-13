@@ -1,13 +1,15 @@
 ﻿<Window x:Class="ExecutiveDocumentation.Views.MainView"
-     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:ExecutiveDocumentation.ViewModels"
         d:DataContext="{d:DesignInstance Type=vm:MainViewVM}"
         Style="{StaticResource ResourceKey=WindowStyle}" 
+        Width="1800" Height="1000"
+        WindowStartupLocation="CenterScreen"
          >
 
 
@@ -26,7 +28,11 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Vertical" Background="Transparent" Grid.RowSpan="2">
-            
+            <DockPanel  Background="Transparent" HorizontalAlignment ="Stretch" Height="60" VerticalAlignment="Center">
+                <StackPanel  Margin="20,15,20,0" Orientation="Horizontal"  HorizontalAlignment ="Left" VerticalAlignment="Top">
+                    <Image Source ="pack://application:,,,/Resources/logoNGM.png" />
+                    
+                </StackPanel>
             <StackPanel  Margin="0,15,20,0" Orientation="Horizontal"  HorizontalAlignment ="Right" VerticalAlignment="Top">
                     <Button Style="{StaticResource ResourceKey=MinimizeBtnStyle}"
                      Command="{Binding WindowMinimizeCommand}"
@@ -38,9 +44,9 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                      Command="{Binding CloseWindowCommand}"
                      />
             </StackPanel>
-           
 
-            <StackPanel Orientation="Horizontal" Height="50"  Margin="20,30,20,0" Background="White">
+            </DockPanel>
+            <StackPanel Orientation="Horizontal" Height="50"  Margin="20,15,20,0" Background="White">
                 <Button
                    Content="Создать" 
                    Command="{Binding AddNewObjectDB}"
@@ -58,58 +64,23 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
 
             <StackPanel Orientation="Horizontal" Margin ="20, 0, 20 , 20" Background="White" >
                 <StackPanel Orientation="Vertical"   >
-                    <Label Content="Объект" 
-                               Height="45"/>
+                    <DataGrid AutoGenerateColumns="False" HorizontalGridLinesBrush="#CAD9EC"
+                              RowBackground="White" AlternatingRowBackground="White"
+                              ItemsSource="{Binding ObjectsList}">
 
-                    <ListBox  Width="550" 
-                          ItemsSource="{Binding ObjectsList}" 
-                          DisplayMemberPath="ObjectAdress"
-                          SelectedItem="{Binding SelectObject}"
-                            
-                        Height="550"
-                        HorizontalAlignment="Left"
-                        BorderBrush="Aqua"  
-                          SelectedIndex="0">
-                    </ListBox>
+                       
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Объект" Binding="{Binding Path=ObjectName}" Width="700" />
+                            <DataGridTextColumn Header="Заказчик" Binding="{Binding Path=Customer}" Width="150" />
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}" Width="50" />
+                        </DataGrid.Columns>
 
 
-                </StackPanel>
+                    </DataGrid>
 
-                <StackPanel Orientation="Vertical"   
-                        Margin="20, 0, 0,0"
-                        >
-                    <Label Content="Данные объекта" 
-                   Height="45"/>
-
-                    <TextBlock 
-                    Text="{Binding SelectObject.ObjectName}"
-                     TextWrapping="Wrap" 
-                    Height="50" Width="400"/>
-
-                    <StackPanel Orientation="Horizontal" 
-                           >
-                        <Label Content="Заказчик" 
-                        Height="50"/>
-                        <TextBlock 
-                        Margin="20, 0, 0,0"
-                         Text="{Binding SelectObject.Customer}"
-                          TextWrapping="Wrap" 
-                         Height="50" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" 
-            >
-                        <Label Content="Шифр проекта" 
-         Height="50"/>
-                        <TextBlock 
-         Margin="20, 0, 0,0"
-          Text="{Binding SelectObject.ProjectForObject}"
-           TextWrapping="Wrap" 
-          Height="50" />
-                    </StackPanel>
 
                 </StackPanel>
             </StackPanel>
-
         </StackPanel>
     </Grid>
 </Window>

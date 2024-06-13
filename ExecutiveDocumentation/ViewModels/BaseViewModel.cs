@@ -67,6 +67,7 @@ namespace ExecutiveDocumentation.ViewModels
             set
             {
                 kontragents = value;
+                LoadKontragents();
                 OnPropertyChanged();
             }
         }

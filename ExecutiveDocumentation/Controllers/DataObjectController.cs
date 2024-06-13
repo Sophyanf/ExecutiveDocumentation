@@ -86,6 +86,10 @@ namespace ExecutiveDocumentation.Controllers
                 await Task.Run(() =>
                 {
                     result = _context.ConstructionObjects.ToList();
+                    foreach (var item in result)
+                    {
+                        item.Customer = GetObjectKontragent(item);
+                    }
                 });
           
                 return (List<ConstructionObject>)result;
