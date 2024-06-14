@@ -20,7 +20,8 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
     <Grid Background="Transparent" MouseDown='OnDragMoveWindow'>
       
 
-        <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+        <StackPanel Orientation="Vertical" VerticalAlignment ="Stretch">
+            
             <DockPanel  Background="Transparent" HorizontalAlignment ="Stretch" Height="60" VerticalAlignment="Center">
                 <StackPanel  Margin="10,15,20,0" Orientation="Horizontal"  HorizontalAlignment ="Left" VerticalAlignment="Top">
                     <Image Source ="pack://application:,,,/Resources/logoNGM.png" Width="80" Height="50" />
@@ -40,12 +41,15 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
 
             </DockPanel>
 
-            <StackPanel Orientation="Horizontal" Width="800" >
+          
       
 
             <StackPanel Orientation="Vertical"  
-                         HorizontalAlignment="Left"
-                         VerticalAlignment="Center">
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Bottom"
+                        Margin="20,20,20,10"
+                        Background="#EEF7FC"
+            >
 
                 <Label
                     Height="50"
@@ -64,21 +68,13 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                     Content="Наименование объекта" 
                 />
                   
-                        <ComboBox Name ="kontragent" Width="200"
-                        ItemsSource="{Binding Kontragents}" 
-                              DisplayMemberPath="KontragentShortName"
-                                  SelectedItem="{Binding SelectKontragent}"
-                        Height="25"
-                        HorizontalAlignment="Left"
-                        BorderBrush="Aqua"  >
+                     
 
-                        </ComboBox>
-                        <TextBox Name ="tbName"
+                        <TextBox 
                          Text="{Binding ObjName}"
                     Width="350"
                     Height="25"
                     HorizontalAlignment="Right"
-                    BorderBrush="Aqua"
                 />
                 </StackPanel>
                 
@@ -92,7 +88,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                     Height="25"
                          Text="{Binding ObjAdress}"
                     HorizontalAlignment="Right"
-                    BorderBrush="Aqua"
+                   
                 />
                     
                     </StackPanel>
@@ -228,7 +224,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                 
                 <Button
                     Content="Загрузить" 
-                    Margin="30,50,30,0"
+                    Margin="0,0,0,20"
                     Width="90"
                     Height ="40" Command="{Binding AddNewObject}"
                 />
@@ -238,6 +234,6 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
 </StackPanel>
          
         
-            </StackPanel>
+       
         </Grid>
 </Window>

@@ -62,7 +62,7 @@ namespace ExecutiveDocumentation.Controllers
             }
         }
 
-        public ObservableCollection<Kontragent> GetListKontragent()          //Список категорий (по возможности заменить на GetDataProductAsync(string dataType) ))
+        public ObservableCollection<Kontragent> GetListKontragent()          //Список контрагентов (по возможности заменить на GetDataProductAsync(string dataType) ))
         {
             IQueryable<Kontragent> result = null;
               

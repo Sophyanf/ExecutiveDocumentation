@@ -17,6 +17,11 @@ namespace ExecutiveDocumentation.Models
         public DateTime EndDate { get; set; }
         public ProjectForObject ProjectForObject   { get; set; }
         public WorksTypeObg?  ListOfWorks { get; set; }
+        public ResponsiblPerson ConstrOrgRespPerson { get; set; }
+        public ResponsiblPerson ConstrOrgBuildRespPerson { get; set; }
+        public ResponsiblPerson CustomerOrgRespPerson { get; set; }
+        public ResponsiblPerson CustomerOrgBuildRespPerson { get; set; }
+        public ResponsiblPerson ProjectOrgBuildRespPerson { get; set; }
 
     }
 }

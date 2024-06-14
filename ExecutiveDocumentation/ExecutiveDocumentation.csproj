@@ -111,6 +111,10 @@
     <Compile Include="Migrations\202310101309249_Corr1.designer.cs">
       <DependentUpon>202310101309249_Corr1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202406141008039_RespPerson.cs" />
+    <Compile Include="Migrations\202406141008039_RespPerson.designer.cs">
+      <DependentUpon>202406141008039_RespPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OthersClasses\TypeOfWork.cs" />
     <Compile Include="ToStringData.cs" />
@@ -206,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310101309249_Corr1.resx">
       <DependentUpon>202310101309249_Corr1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406141008039_RespPerson.resx">
+      <DependentUpon>202406141008039_RespPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
