@@ -18,38 +18,37 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
 
 
     <Grid Background="Transparent" MouseDown='OnDragMoveWindow'>
-      
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width='*' />
+            <ColumnDefinition Width='Auto' />
+        </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Vertical" VerticalAlignment ="Stretch">
-            
+        <StackPanel Orientation="Vertical" Background="Transparent" Grid.RowSpan="2">
             <DockPanel  Background="Transparent" HorizontalAlignment ="Stretch" Height="60" VerticalAlignment="Center">
-                <StackPanel  Margin="10,15,20,0" Orientation="Horizontal"  HorizontalAlignment ="Left" VerticalAlignment="Top">
-                    <Image Source ="pack://application:,,,/Resources/logoNGM.png" Width="80" Height="50" />
+                <StackPanel  Margin="20,15,20,0" Orientation="Horizontal"  HorizontalAlignment ="Left" VerticalAlignment="Top">
+                    <Image Source ="pack://application:,,,/Resources/logoNGM.png" />
 
                 </StackPanel>
                 <StackPanel  Margin="0,15,20,0" Orientation="Horizontal"  HorizontalAlignment ="Right" VerticalAlignment="Top">
                     <Button Style="{StaticResource ResourceKey=MinimizeBtnStyle}"
-          Command="{Binding WindowMinimizeCommand}"
-          />
+                  Command="{Binding WindowMinimizeCommand}"
+                  />
                     <Button Style="{StaticResource ResourceKey=MaximizeBtnStyle}"
-          Command="{Binding WindowMaximizeCommand}"
-          />
+                  Command="{Binding WindowMaximizeCommand}"
+                  />
                     <Button Style="{StaticResource ResourceKey=CloseWindowBtnStyle}"
-          Command="{Binding CloseWindowCommand}"
-          />
+                  Command="{Binding CloseWindowCommand}"
+                  />
                 </StackPanel>
-
             </DockPanel>
 
-          
-      
 
-            <StackPanel Orientation="Vertical"  
-                         HorizontalAlignment="Stretch"
-                         VerticalAlignment="Bottom"
-                        Margin="20,20,20,10"
-                        Background="#EEF7FC"
-            >
+            <StackPanel Orientation="Vertical"  Height="500" Margin ="20, 15, 20 , 20" Background="White"  >
+
 
                 <Label
                     Height="50"
@@ -60,47 +59,48 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
 
                 <StackPanel Orientation="Horizontal" Height="40">
 
-                   
+
                     <Label
                     Width="350"
                     HorizontalAlignment="Left"
                      VerticalAlignment="Center"
                     Content="Наименование объекта" 
                 />
-                  
-                     
 
-                        <TextBox 
+
+
+                    <TextBox 
                          Text="{Binding ObjName}"
                     Width="350"
                     Height="25"
                     HorizontalAlignment="Right"
                 />
                 </StackPanel>
-                
+
                 <StackPanel Orientation="Horizontal" Height="40">
                     <Label Width="350"
                     HorizontalAlignment="Left"
                     Content="Адрес" 
                 />
-                <TextBox Name ="tbAdress"
+                    <TextBox Name ="tbAdress"
                     Width="350"
                     Height="25"
                          Text="{Binding ObjAdress}"
                     HorizontalAlignment="Right"
                    
                 />
-                    
-                    </StackPanel>
+
+                </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Height="40">
                     <Label Width="350"
                     HorizontalAlignment="Left"
                     Content="Заказчик" 
                 />
-                <ComboBox Width="250"
+                    <ComboBox Width="250"
+                                  
                     ItemsSource="{Binding Kontragents}" 
-                          DisplayMemberPath="KontragentName"
+                          DisplayMemberPath="KontragentShortName"
                           SelectedItem="{Binding SelectKontragent}"
                     Height="25"
                     HorizontalAlignment="Left"
@@ -126,13 +126,13 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                     HorizontalAlignment="Left"
                     Content="Дата начала строительства" 
                 />
-                <DatePicker 
+                    <DatePicker 
                     SelectedDate="{Binding StartDate}"
                     Width="200"
                     Height="30"
                     HorizontalAlignment="Left"
                 />
-                            </StackPanel>
+                </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Height="40">
                     <Label 
@@ -140,7 +140,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                     HorizontalAlignment="Left"
                     Content="Дата окончания строительства" 
                 />
-                <DatePicker Name ="dpFinish"
+                    <DatePicker Name ="dpFinish"
                             SelectedDate="{Binding EndDate}"
                             
                     Width="200"
@@ -155,7 +155,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                     Content="Данные проекта" 
                 />
 
-                <Button Background="Transparent"
+                    <Button Background="Transparent"
                        Width="250"
                     Height="30"
                         Foreground="Blue"
@@ -165,7 +165,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                         VerticalAlignment="Center"
                         Command="{Binding AddNewProject}"
                         >
-                    
+
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Content" Value="{Binding ProjectStr}" />
@@ -193,7 +193,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                     </Button>
                 </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Height="40">
+                <StackPanel Orientation="Horizontal" Height="40">
                     <Label Width="350"
                     HorizontalAlignment="Left"
                     Content="Виды работ" 
@@ -221,7 +221,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                         </Button.Style>
                     </Button>
                 </StackPanel>
-                
+
                 <Button
                     Content="Загрузить" 
                     Margin="0,0,0,20"
@@ -230,10 +230,8 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                 />
 
             </StackPanel>
-       
-</StackPanel>
-         
-        
-       
-        </Grid>
+        </StackPanel>
+
+    </Grid>
+
 </Window>

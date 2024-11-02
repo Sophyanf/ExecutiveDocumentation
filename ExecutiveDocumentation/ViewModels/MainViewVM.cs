@@ -27,14 +27,9 @@ namespace ExecutiveDocumentation.ViewModels
         {
 
             AddNewObjectDB = new ActionCommand(x => AddNewObject());
-            /*Kontragents = new ObservableCollection<Kontragent>();
-            LoadKontragents();
-           
-            ProjectsList = new ObservableCollection<ProjectForObject>();
-            LoadProjects();*/
+
             ObjectsList = new ObservableCollection<ConstructionObject>();
             LoadObjects();
-
         }
         private void AddNewObject()
         {

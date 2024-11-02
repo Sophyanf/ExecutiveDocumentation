@@ -128,8 +128,8 @@ namespace ExecutiveDocumentation.ViewModels
             
             AddNewProject = new ActionCommand(x => AddNewProjectAsinc());
             AddNewConctrObject = new ActionCommand(x => addNewObj());
-            //Kontragents = new ObservableCollection<Kontragent>();
-            //LoadKontragentsAsync();
+            Kontragents = new ObservableCollection<Kontragent>();
+            LoadKontragents();
             FlagProject = true;
             FlagListOfWorks = true;
             StartDate = DateTime.Now;

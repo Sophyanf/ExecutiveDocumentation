@@ -11,10 +11,9 @@ namespace ExecutiveDocumentation.Models
         public int ID { get; set; }
         public string Shifr { get; set; }
         public Kontragent ProjektСompany { get; set; }
-
+        public ICollection<ConstructionObject> ConstructionObjects { get; set; } = new List<ConstructionObject>();
         public override string ToString()
         {
-           
                 return  Shifr;
         }
     }

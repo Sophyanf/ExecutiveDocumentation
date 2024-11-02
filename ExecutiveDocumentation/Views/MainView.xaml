@@ -33,7 +33,7 @@
                     <Image Source ="pack://application:,,,/Resources/logoNGM.png" />
                     
                 </StackPanel>
-            <StackPanel  Margin="0,15,20,0" Orientation="Horizontal"  HorizontalAlignment ="Right" VerticalAlignment="Top">
+                <StackPanel  Margin="0,15,20,0" Orientation="Horizontal"  HorizontalAlignment ="Right" VerticalAlignment="Top">
                     <Button Style="{StaticResource ResourceKey=MinimizeBtnStyle}"
                      Command="{Binding WindowMinimizeCommand}"
                      />
@@ -43,9 +43,10 @@
                     <Button Style="{StaticResource ResourceKey=CloseWindowBtnStyle}"
                      Command="{Binding CloseWindowCommand}"
                      />
-            </StackPanel>
-
+                </StackPanel>
             </DockPanel>
+            
+            
             <StackPanel Orientation="Horizontal" Height="50"  Margin="20,15,20,0" Background="White">
                 <Button
                    Content="Создать" 
@@ -54,33 +55,36 @@
 
                 <Button
                     Content="Не работает" 
-                    Command = "{Binding PrintDocumentCommand}"
                 />
                 <Button
                     Content="Не работает" 
-                   Command = "{Binding LoadFromExcelCommand}"
                 />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin ="20, 0, 20 , 20" Background="White" >
-                <StackPanel Orientation="Vertical"   >
+                <StackPanel Orientation="Vertical"  Height="800" >
                     <DataGrid AutoGenerateColumns="False" HorizontalGridLinesBrush="#CAD9EC"
                               RowBackground="White" AlternatingRowBackground="White"
                               ItemsSource="{Binding ObjectsList}">
 
                        
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Объект" Binding="{Binding Path=ObjectName}" Width="700" />
-                            <DataGridTextColumn Header="Заказчик" Binding="{Binding Path=Customer}" Width="150" />
-                            <DataGridTextColumn Header="Цена" Binding="{Binding Path=Price}" Width="50" />
+                            <DataGridTextColumn Header="Объект" Binding="{Binding Path=ObjectName}" Width="300">
+                                <DataGridTextColumn.ElementStyle>
+                                     <Style TargetType="TextBlock">
+                                         <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                     </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="Заказчик" Binding="{Binding Path=Customer}" Width="150" />
+                            <DataGridTextColumn Header="Проект" Binding="{Binding Path=ProjectForObject.Shifr}" Width="50" />
+                            <DataGridTextColumn Header="Проектная организация" Binding="{Binding Path=ProjectForObject.ProjektСompany}" Width="50" />
                         </DataGrid.Columns>
-
-
                     </DataGrid>
 
 
                 </StackPanel>
             </StackPanel>
         </StackPanel>
-    </Grid>
+  </Grid>
 </Window>

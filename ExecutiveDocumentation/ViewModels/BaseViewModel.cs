@@ -67,14 +67,13 @@ namespace ExecutiveDocumentation.ViewModels
             set
             {
                 kontragents = value;
-                LoadKontragents();
                 OnPropertyChanged();
             }
         }
         
         protected void LoadKontragents()
         {
-            Kontragents =  dataObj.GetListKontragent();
+            Kontragents = new ObservableCollection<Kontragent>(dataObj.GetListKontragent());
         }
 
         #endregion
@@ -92,16 +91,13 @@ namespace ExecutiveDocumentation.ViewModels
             }
         }
 
-        protected async void LoadObjects()
+        protected void LoadObjects()
         {
             try
             {
-                await Task.Run(async () =>
-                {
-                    ObjectsList = new ObservableCollection<ConstructionObject>(await dataObj.GetListConstructionObjectsAsync());
-                });
+                    ObjectsList = new ObservableCollection<ConstructionObject>(dataObj.GetListConstructionObjects());
             }
-            catch (Exception ex) { }
+            catch (Exception ) { }
                
            
         }

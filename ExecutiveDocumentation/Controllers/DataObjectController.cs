@@ -62,13 +62,13 @@ namespace ExecutiveDocumentation.Controllers
             }
         }
 
-        public ObservableCollection<Kontragent> GetListKontragent()          //Список контрагентов (по возможности заменить на GetDataProductAsync(string dataType) ))
+        public List<Kontragent> GetListKontragent()          //Список контрагентов (по возможности заменить на GetDataProductAsync(string dataType) ))
         {
-            IQueryable<Kontragent> result = null;
-              
-                    result = _context.Kontragents;
-          
-                return new ObservableCollection<Kontragent>(result);
+            IEnumerable<Kontragent> result = null;
+
+            result = _context.Kontragents.ToList();
+
+            return (List< Kontragent>)result;
         }
 
         public Kontragent GetObjectKontragent(ConstructionObject constructionObject)          //Получить контрагента конкретного объекта
@@ -80,18 +80,25 @@ namespace ExecutiveDocumentation.Controllers
             return result;
         }
 
-        public async Task<List<ConstructionObject>> GetListConstructionObjectsAsync()          //Список объектов
+            public ProjectForObject GetProjectForObject(ConstructionObject constructionObject)          //Получить проект объекта
+            {
+                ProjectForObject result = null;
+
+               result = _context.ProjectForObjects.Include("ConstructionObjects").FirstOrDefault(k => k.ConstructionObjects.Where(co=>co.ID == constructionObject.ID).Any());
+
+                return result;
+            }
+
+            public List<ConstructionObject> GetListConstructionObjects()          //Список объектов
         {
             IEnumerable<ConstructionObject> result = null;
-                await Task.Run(() =>
-                {
+                
                     result = _context.ConstructionObjects.ToList();
                     foreach (var item in result)
                     {
                         item.Customer = GetObjectKontragent(item);
+                        item.ProjectForObject = GetProjectForObject(item);
                     }
-                });
-          
                 return (List<ConstructionObject>)result;
         }
        

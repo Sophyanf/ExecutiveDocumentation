@@ -14,5 +14,6 @@ namespace ExecutiveDocumentation.Models
         public string PersonDocument  { get; set; }
         public string Functions { get; set; }
         public Kontragent PersonKontragent { get; set; }
+        public ICollection<ConstructionObject> ConstructionObjects { get; set; } = new List<ConstructionObject>();
     }
 }
