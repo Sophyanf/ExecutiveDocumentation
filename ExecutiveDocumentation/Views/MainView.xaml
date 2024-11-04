@@ -8,7 +8,8 @@
         xmlns:vm="clr-namespace:ExecutiveDocumentation.ViewModels"
         d:DataContext="{d:DesignInstance Type=vm:MainViewVM}"
         Style="{StaticResource ResourceKey=WindowStyle}" 
-        Width="1800" Height="1000"
+        WindowState = "Maximized"
+      
         WindowStartupLocation="CenterScreen"
          >
 
@@ -54,7 +55,8 @@
                 />
 
                 <Button
-                    Content="Не работает" 
+                    Content="Тест" 
+                    Command="{Binding AddPersonDB}"
                 />
                 <Button
                     Content="Не работает" 
@@ -76,9 +78,28 @@
                                      </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="Заказчик" Binding="{Binding Path=Customer}" Width="150" />
-                            <DataGridTextColumn Header="Проект" Binding="{Binding Path=ProjectForObject.Shifr}" Width="50" />
-                            <DataGridTextColumn Header="Проектная организация" Binding="{Binding Path=ProjectForObject.ProjektСompany}" Width="50" />
+                                <DataGridTextColumn Header="Заказчик" Binding="{Binding Path=Customer}" Width="100" />
+                            <DataGridTextColumn Header="Проект"  Binding="{Binding Path=ProjectForObject}" Width="100" />
+                            <DataGridTextColumn Header="Проектная организация" Binding="{Binding Path=ProjectForObject.ProjektСompany.KontragentShortName}" Width="50" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid AutoGenerateColumns="False" HorizontalGridLinesBrush="#CAD9EC"
+                              RowBackground="White" AlternatingRowBackground="White"
+                              ItemsSource="{Binding PersonsList}">
+
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Объект" Binding="{Binding Path=PersonFIO}" Width="300">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Заказчик" Binding="{Binding Path=PersonKontragent}" Width="100" />
+                            <DataGridTextColumn Header="Проект"  Binding="{Binding Path=PersonDocument}" Width="100" />
+                          
                         </DataGrid.Columns>
                     </DataGrid>
 

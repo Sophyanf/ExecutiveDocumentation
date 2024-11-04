@@ -42,10 +42,7 @@
 
         <StackPanel Orientation="Horizontal" Width="480" >
 
-            <StackPanel.Background>
-                <ImageBrush ImageSource="{StaticResource ResourceKey=WindBackgraund}" />
-            </StackPanel.Background>
-
+      
             <StackPanel Orientation="Vertical"  
                          HorizontalAlignment="Left"
                          VerticalAlignment="Center">

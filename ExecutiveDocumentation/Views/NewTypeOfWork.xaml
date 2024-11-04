@@ -38,10 +38,7 @@
         </Border>
         <StackPanel Orientation="Horizontal" >
 
-            <StackPanel.Background>
-                <ImageBrush ImageSource="{StaticResource ResourceKey=WindBackgraund}" />
-            </StackPanel.Background>
-
+           
                 <StackPanel Orientation="Vertical" >
 
                 <Label 

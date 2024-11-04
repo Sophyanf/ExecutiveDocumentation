@@ -12,8 +12,8 @@ namespace ExecutiveDocumentation.Models
         public string PersonFIO { get; set; }
         public string PersonPost { get; set; }
         public string PersonDocument  { get; set; }
-        public string Functions { get; set; }
-        public Kontragent PersonKontragent { get; set; }
-        public ICollection<ConstructionObject> ConstructionObjects { get; set; } = new List<ConstructionObject>();
+        public string Functions { get; set; } = null;
+        public Kontragent PersonKontragent { get; set; } = null;
+        public ICollection<ConstructionObject>? ConstructionObjects { get; set; }
     }
 }

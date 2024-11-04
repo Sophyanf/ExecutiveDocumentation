@@ -10,6 +10,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using Application = System.Windows.Application;
+using Window = System.Windows.Window;
 
 namespace ExecutiveDocumentation.ViewModels
 {
@@ -90,17 +93,39 @@ namespace ExecutiveDocumentation.ViewModels
                 OnPropertyChanged(); 
             }
         }
-
         protected void LoadObjects()
         {
             try
             {
-                    ObjectsList = new ObservableCollection<ConstructionObject>(dataObj.GetListConstructionObjects());
+                ObjectsList = new ObservableCollection<ConstructionObject>(dataObj.GetListConstructionObjects());
             }
-            catch (Exception ) { }
-               
-           
+            catch (Exception) { }
+
+
         }
+        public ObservableCollection<ResponsiblPerson> personsList;
+        public ObservableCollection<ResponsiblPerson> PersonsList
+
+        {
+            get { return personsList; }
+            set
+            {
+                personsList = value;
+                OnPropertyChanged();
+            }
+        }
+
+        protected void LoadPersens()
+        {
+            try
+            {
+                PersonsList = new ObservableCollection<ResponsiblPerson>(dataObj.GetListPersons());
+            }
+            catch (Exception) { }
+
+
+        }
+      
         #endregion
 
         #region Projects
@@ -115,20 +140,7 @@ namespace ExecutiveDocumentation.ViewModels
                 OnPropertyChanged();
             }
         }
-        protected async void LoadProjects()
-        {
-            try
-            {
-                await Task.Run(async () =>
-                {
-                    ProjectsList = new ObservableCollection<ProjectForObject>(await dataObj.GetListProjectsAsync());
-                });
-
-            }
-            catch (Exception)
-            {
-            }
-        }
+       
 
         #endregion
 
@@ -139,6 +151,17 @@ namespace ExecutiveDocumentation.ViewModels
             set
             {
                 thisObj = value;
+                OnPropertyChanged();
+            }
+        }
+
+        ResponsiblPerson thisPerson = null;
+        public ResponsiblPerson ThisPerson
+        {
+            get { return thisPerson; }
+            set
+            {
+                thisPerson = value;
                 OnPropertyChanged();
             }
         }
@@ -173,8 +196,8 @@ namespace ExecutiveDocumentation.ViewModels
         }
         private void AddNewKontragentView()
         {
-            KontragentAddView kontragentAddView = new KontragentAddView();
-            kontragentAddView.ShowDialog();
+            AddKontragentView AddKontragentView = new AddKontragentView();
+            AddKontragentView.ShowDialog();
             LoadKontragents();
         }
 

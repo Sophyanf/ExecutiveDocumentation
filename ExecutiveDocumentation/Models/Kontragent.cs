@@ -16,7 +16,7 @@ namespace ExecutiveDocumentation.Models
         public string KontragentAdress { get; set; }
         public ICollection<ConstructionObject> ConstructionObjects { get; set; } = new List<ConstructionObject>();
         public ICollection<ProjectForObject> ProjectForObjects { get; set; } = new List<ProjectForObject>();
-        public ICollection<ResponsiblPerson> ResponsiblPeoples { get; set; } = new List <ResponsiblPerson>();
+        public ICollection<ResponsiblPerson> ResponsiblPersons { get; set; } = new List <ResponsiblPerson>();
 
         public override string ToString()
         {

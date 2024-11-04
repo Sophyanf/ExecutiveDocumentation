@@ -126,6 +126,7 @@
     <Compile Include="Models\ResponsiblPerson.cs" />
     <Compile Include="Models\WorksTypeObg.cs" />
     <Compile Include="Models\WorkType.cs" />
+    <Compile Include="ViewModels\ResponsiblPersonVM.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ListOfWorksVM.cs" />
     <Compile Include="ViewModels\MainViewVM.cs" />
@@ -134,6 +135,9 @@
     <Compile Include="ViewModels\KontragentAddVM.cs" />
     <Compile Include="Views\AddNewListWorksObj.xaml.cs">
       <DependentUpon>AddNewListWorksObj.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddResponsiblPerson.xaml.cs">
+      <DependentUpon>AddResponsiblPerson.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListOfWorksView.xaml.cs">
       <DependentUpon>ListOfWorksView.xaml</DependentUpon>
@@ -144,20 +148,24 @@
     <Compile Include="Views\NewTypeOfWork.xaml.cs">
       <DependentUpon>NewTypeOfWork.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ObjectAddView.xaml.cs">
-      <DependentUpon>ObjectAddView.xaml</DependentUpon>
+    <Compile Include="Views\AddObjectView.xaml.cs">
+      <DependentUpon>AddObjectView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\KontragentAddView.xaml.cs">
-      <DependentUpon>KontragentAddView.xaml</DependentUpon>
+    <Compile Include="Views\AddKontragentView.xaml.cs">
+      <DependentUpon>AddKontragentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProjectForObjectAddView.xaml.cs">
-      <DependentUpon>ProjectForObjectAddView.xaml</DependentUpon>
+    <Compile Include="Views\AddProjectForObjectView.xaml.cs">
+      <DependentUpon>AddProjectForObjectView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\WindowBorderStyleOtersViews.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddNewListWorksObj.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddResponsiblPerson.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -173,11 +181,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ObjectAddView.xaml">
+    <Page Include="Views\AddObjectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\KontragentAddView.xaml">
+    <Page Include="Views\AddKontragentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,7 +194,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="WordHalper.cs" />
-    <Page Include="Views\ProjectForObjectAddView.xaml">
+    <Page Include="Views\AddProjectForObjectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

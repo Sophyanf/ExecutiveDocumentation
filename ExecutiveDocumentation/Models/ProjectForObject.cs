@@ -14,7 +14,7 @@ namespace ExecutiveDocumentation.Models
         public ICollection<ConstructionObject> ConstructionObjects { get; set; } = new List<ConstructionObject>();
         public override string ToString()
         {
-                return  Shifr;
+                return  Shifr + " (" + ProjektСompany.KontragentShortName + ")";
         }
     }
 }

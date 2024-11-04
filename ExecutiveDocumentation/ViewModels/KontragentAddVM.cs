@@ -85,7 +85,7 @@ namespace ExecutiveDocumentation.ViewModels
             else Application.Current.Windows.OfType<Window>().SingleOrDefault(y => y.IsActive).Close();
         }
 
-        public KontragentAddVM ()
+        public KontragentAddVM () // конструктор
         {
             AddNewKontragent = new ActionCommand(x => AddKontragentAsync());
         }

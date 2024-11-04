@@ -22,15 +22,24 @@ namespace ExecutiveDocumentation.ViewModels
     {
      
         public ActionCommand AddNewObjectDB { get; set; }
+        public ActionCommand AddPersonDB { get; set; }
 
         public MainViewVM()
         {
 
             AddNewObjectDB = new ActionCommand(x => AddNewObject());
+            AddPersonDB = new ActionCommand(x => AddPerson());
 
             ObjectsList = new ObservableCollection<ConstructionObject>();
             LoadObjects();
         }
+
+        private void AddPerson()
+        {
+            AddResponsiblPerson person = new AddResponsiblPerson();
+            person.ShowDialog();
+        }
+
         private void AddNewObject()
         {
             ObjectAddView objectView = new ObjectAddView();

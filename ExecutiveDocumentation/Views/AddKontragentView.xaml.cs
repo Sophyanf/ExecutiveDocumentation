@@ -21,13 +21,11 @@ using Window = System.Windows.Window;
 namespace ExecutiveDocumentation.Views
 {
     /// <summary>
-    /// Логика взаимодействия для KontragentAddView.xaml
+    /// Логика взаимодействия для AddKontragentView.xaml
     /// </summary>
-    public partial class KontragentAddView : Window
+    public partial class AddKontragentView : Window
     {
-        
-        
-        public KontragentAddView()
+        public AddKontragentView()
         {
             InitializeComponent();
         }

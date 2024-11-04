@@ -156,13 +156,15 @@ namespace ExecutiveDocumentation.ViewModels
             await Task.Run(async () =>
             {
                 rez = await dataObj.AddObjectAsync(ThisObj, SelectKontragent);
+
             });
             if (rez == false)
             {
                 MessageBox.Show("Ошибка!!! Проверьте объект");
                 return;
             }
-            else Application.Current.Windows.OfType<Window>().SingleOrDefault(y => y.IsActive).Close();
+            else MessageBox.Show("Ob]ect add");
+            Application.Current.Windows.OfType<Window>().SingleOrDefault(y => y.IsActive).Close();
         }
     }
     }
