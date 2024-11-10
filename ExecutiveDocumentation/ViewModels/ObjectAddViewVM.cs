@@ -18,15 +18,16 @@ using Window = System.Windows.Window;
 
 namespace ExecutiveDocumentation.ViewModels
 {
-    public class ObjectAddViewVM : BaseViewModel {
+    public class ObjectAddViewVM : BaseViewModel
+    {
 
         #region Commands
-        public ActionCommand AddNewProject { get; set; } 
+        public ActionCommand AddNewProject { get; set; }
         public ActionCommand AddNewConctrObject { get; set; }
-       
+
         public ActionCommand DeleteProject { get; set; }
 
-      
+
         private async void AddNewProjectAsinc()
         {
             FlagProject = false;
@@ -50,7 +51,7 @@ namespace ExecutiveDocumentation.ViewModels
                 projectStr = value;
                 OnPropertyChanged();
             }
-        } 
+        }
         private ObservableCollection<ProjectForObject> projects;
         public ObservableCollection<ProjectForObject> Projects
 
@@ -74,7 +75,7 @@ namespace ExecutiveDocumentation.ViewModels
                 OnPropertyChanged();
             }
         }
-       
+
 
 
         #endregion
@@ -92,7 +93,7 @@ namespace ExecutiveDocumentation.ViewModels
             }
         }
 
-       
+
         bool flagListOfWorks;
         public bool FlagListOfWorks
         {
@@ -105,9 +106,9 @@ namespace ExecutiveDocumentation.ViewModels
             }
         }
 
-      
 
-      
+
+
         #endregion
 
         #region ObgectProperties
@@ -125,7 +126,7 @@ namespace ExecutiveDocumentation.ViewModels
         #endregion
         public ObjectAddViewVM()
         {
-            
+
             AddNewProject = new ActionCommand(x => AddNewProjectAsinc());
             AddNewConctrObject = new ActionCommand(x => addNewObj());
             Kontragents = new ObservableCollection<Kontragent>();
@@ -136,9 +137,9 @@ namespace ExecutiveDocumentation.ViewModels
             EndDate = DateTime.Now;
         }
 
-        
 
-        private async void addNewObj ()
+
+        private async void addNewObj()
         {
             ThisObj = new ConstructionObject()// создаем новый проект из текстбоксов и пр.
             {
@@ -155,7 +156,7 @@ namespace ExecutiveDocumentation.ViewModels
             bool rez = false;
             await Task.Run(async () =>
             {
-                rez = await dataObj.AddObjectAsync(ThisObj, SelectKontragent);
+                rez = await dataObjAdd.AddObjectAsync(ThisObj, SelectKontragent);
 
             });
             if (rez == false)
@@ -167,4 +168,4 @@ namespace ExecutiveDocumentation.ViewModels
             Application.Current.Windows.OfType<Window>().SingleOrDefault(y => y.IsActive).Close();
         }
     }
-    }
+}

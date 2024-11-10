@@ -1,4 +1,5 @@
-﻿using ExecutiveDocumentation.Models;
+﻿using ExecutiveDocumentation.Controllers;
+using ExecutiveDocumentation.Models;
 using ExecutiveDocumentation.Views;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace ExecutiveDocumentation.ViewModels
 {
     public class ProjectForObjectAddVM : BaseViewModel
     {
+        
         public ActionCommand AddNewProjectDB { get; set; }
         private String projectShifr;
         public String ProjectShifr
@@ -44,7 +46,7 @@ namespace ExecutiveDocumentation.ViewModels
             bool rez = false;
             await Task.Run(async () =>
             {
-                rez = await dataObj.AddObjectPropertiesAsync(newProduct, SelectKontragent);
+                rez = await dataObjAdd.AddProjectAsync(newProduct, SelectKontragent);
             });
             if (rez == false)
             {

@@ -101,7 +101,8 @@
     <Compile Include="ActionCommand.cs" />
     <Compile Include="AppDbContext.cs" />
     <Compile Include="CheckingWorks.cs" />
-    <Compile Include="Controllers\DataObjectController.cs" />
+    <Compile Include="Controllers\DataObjectControllerAdd.cs" />
+    <Compile Include="Controllers\DataObjectControllerGet.cs" />
     <Compile Include="IDataObject.cs" />
     <Compile Include="Migrations\202309290941471_Init.cs" />
     <Compile Include="Migrations\202309290941471_Init.designer.cs">

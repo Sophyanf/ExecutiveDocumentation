@@ -19,8 +19,14 @@ namespace ExecutiveDocumentation.ViewModels
 
     public class BaseViewModel : INotifyPropertyChanged
     {
-        protected DataObjectController dataObj = DataObjectController.Instance;
-        
+        public int ScreenHeight { get; set; } = (int)SystemParameters.MaximizedPrimaryScreenHeight;
+        public int ScreenWidth { get; set; } = (int)System.Windows.SystemParameters.PrimaryScreenWidth;
+        public int MainStackPanel { get; set; } = (int)SystemParameters.MaximizedPrimaryScreenHeight - 160;
+
+
+        protected DataObjectControllerAdd dataObjAdd = DataObjectControllerAdd.Instance;
+        protected DataObjectControllerGet dataObjGet = DataObjectControllerGet.Instance;
+
 
         #region Commands
         public virtual ActionCommand CloseAppCommand => new ActionCommand(x => Application.Current.Shutdown());
@@ -76,7 +82,7 @@ namespace ExecutiveDocumentation.ViewModels
         
         protected void LoadKontragents()
         {
-            Kontragents = new ObservableCollection<Kontragent>(dataObj.GetListKontragent());
+            Kontragents = new ObservableCollection<Kontragent>(dataObjGet.GetListKontragent());
         }
 
         #endregion
@@ -97,7 +103,7 @@ namespace ExecutiveDocumentation.ViewModels
         {
             try
             {
-                ObjectsList = new ObservableCollection<ConstructionObject>(dataObj.GetListConstructionObjects());
+                ObjectsList = new ObservableCollection<ConstructionObject>(dataObjGet.GetListConstructionObjects());
             }
             catch (Exception) { }
 
@@ -119,7 +125,7 @@ namespace ExecutiveDocumentation.ViewModels
         {
             try
             {
-                PersonsList = new ObservableCollection<ResponsiblPerson>(dataObj.GetListPersons());
+                PersonsList = new ObservableCollection<ResponsiblPerson>(dataObjGet.GetListPersons());
             }
             catch (Exception) { }
 
@@ -173,7 +179,7 @@ namespace ExecutiveDocumentation.ViewModels
             set
             {
                 selectObject = value;
-                selectKontragent = dataObj.GetObjectKontragent(selectObject);
+                selectKontragent = dataObjGet.GetObjectKontragent(selectObject);
                 OnPropertyChanged();
             }
         }
@@ -200,6 +206,5 @@ namespace ExecutiveDocumentation.ViewModels
             AddKontragentView.ShowDialog();
             LoadKontragents();
         }
-
     }
 }

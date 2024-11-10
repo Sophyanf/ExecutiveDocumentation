@@ -8,9 +8,9 @@
         xmlns:vm="clr-namespace:ExecutiveDocumentation.ViewModels"
         d:DataContext="{d:DesignInstance Type=vm:MainViewVM}"
         Style="{StaticResource ResourceKey=WindowStyle}" 
-        WindowState = "Maximized"
-      
-        WindowStartupLocation="CenterScreen"
+        Height = "{Binding  ScreenHeight}" Width="{Binding ScreenWidth}"
+        WindowStartupLocation="Manual" 
+        Left="0" Top="0"
          >
 
 
@@ -63,8 +63,8 @@
                 />
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin ="20, 0, 20 , 20" Background="White" >
-                <StackPanel Orientation="Vertical"  Height="800" >
+            <StackPanel Orientation="Horizontal" Margin ="20, 0, 20 , 20" Background="White" Height ="{Binding MainStackPanel}">
+                <StackPanel Orientation="Vertical"   >
                     <DataGrid AutoGenerateColumns="False" HorizontalGridLinesBrush="#CAD9EC"
                               RowBackground="White" AlternatingRowBackground="White"
                               ItemsSource="{Binding ObjectsList}">

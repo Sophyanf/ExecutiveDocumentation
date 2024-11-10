@@ -26,12 +26,13 @@ namespace ExecutiveDocumentation.ViewModels
 
         public MainViewVM()
         {
-
+            MessageBox.Show(ScreenWidth.ToString());
             AddNewObjectDB = new ActionCommand(x => AddNewObject());
             AddPersonDB = new ActionCommand(x => AddPerson());
-
             ObjectsList = new ObservableCollection<ConstructionObject>();
             LoadObjects();
+            PersonsList = new ObservableCollection<ResponsiblPerson>();
+            LoadPersens();
         }
 
         private void AddPerson()

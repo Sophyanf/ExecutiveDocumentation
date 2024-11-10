@@ -78,7 +78,7 @@ namespace ExecutiveDocumentation.ViewModels
                     KontragentOGRN=this.kontragentOGRN,
             };
 
-            if (await dataObj.AddDataObjAsync(kontragent) == false)
+            if (await dataObjAdd.AddKontragentAsync(kontragent) == false)
             {
                 MessageBox.Show("Ошибка!!! Проверьте категорию");
             }

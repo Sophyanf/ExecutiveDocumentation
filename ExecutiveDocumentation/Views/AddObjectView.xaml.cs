@@ -24,7 +24,8 @@ namespace ExecutiveDocumentation.Views
     /// </summary>
     public partial class ObjectAddView : Window
     {
-        private DataObjectController dataObj = DataObjectController.Instance;
+        private DataObjectControllerGet dataObjGet = DataObjectControllerGet.Instance;
+        private DataObjectControllerAdd dataObjAdd = DataObjectControllerAdd.Instance;
         public ObjectAddView()
         {
             InitializeComponent();

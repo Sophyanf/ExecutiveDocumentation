@@ -53,34 +53,33 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                 <Label
                     Height="30" Margin="0"
                     HorizontalAlignment="Center"
-                     VerticalAlignment="Center"
+                    VerticalAlignment="Center"
                     Content="Данные должностного лица" 
                 />
 
                 <StackPanel Orientation="Horizontal" Height="40" Margin="0, 10
                             ">
                     <Label
-                    Width="200"
-                    HorizontalAlignment="Left"
-                     VerticalAlignment="Center"
-                    Content="ФИО" 
+                        Width="200"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Content="ФИО" 
                 />
                     <TextBox 
-                         Text="{Binding ObjName}"
-                    Width="320" Height="25" 
-                    HorizontalAlignment="Right"
+                        Text="{Binding PersonFIO}"
+                        Width="320" Height="25" 
                 />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Height="40">
                     <Label Width="200" HorizontalAlignment="Left"
-                    Content="Организация" />
+                        Content="Организация" />
                     
                     <ComboBox Width="200" Height="25"
                         ItemsSource="{Binding Kontragents}" 
                         DisplayMemberPath="KontragentShortName"
                         SelectedItem="{Binding SelectKontragent}"
-                        HorizontalAlignment="Left" BorderBrush="Aqua"  
+                        BorderBrush="Aqua"  
                         SelectedIndex="0">
                     </ComboBox>
 
@@ -98,8 +97,8 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                     HorizontalAlignment="Left"
                     Content="Должность"/>
                     <TextBox  Width="320" Height="25"
-                         Text="{Binding ObjAdress}"
-                        HorizontalAlignment="Right" />
+                         Text="{Binding PersonPost}" 
+                              />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Height="40">
@@ -108,21 +107,14 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                     Content="Документ-основание" 
                 />
                     <TextBox Width="320" Height="25"
-                         Text="{Binding ObjAdress}"
-                    HorizontalAlignment="Right"
-                />
+                         Text="{Binding PersonDocument}"  />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" >
                     <Label Width="200"
-                    HorizontalAlignment="Left"
-                    Content="Функции" 
-                />
-                    <TextBox Width="320" Height="65" Margin="0, 10
-"
-                         Text="{Binding ObjAdress}"
-                    HorizontalAlignment="Right"
-                />
+                    Content="Функции"  />
+                    <TextBox  Width="320" Height="75"
+                         Text="{Binding PersonFunctions}" />
                 </StackPanel>
 
                 <Button
@@ -134,7 +126,5 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                 
             </StackPanel>
         </StackPanel>
-
     </Grid>
-
 </Window>

@@ -47,34 +47,34 @@ namespace ExecutiveDocumentation.ViewModels
             }
         }
 
-        private String functions;
-        public String Functions
+        private String personFunctions;
+        public String PersonFunctions
         {
-            get { return functions; }
+            get { return personFunctions; }
             set
             {
-                functions = value;
+                personFunctions = value;
                 OnPropertyChanged();
             }
         }
             
         private async void AddNewPersonAsync()
         {
-            ResponsiblPerson person = new ResponsiblPerson() {
+            ThisPerson = new ResponsiblPerson() {
 
 
                 PersonFIO = this.personFIO,
                 PersonPost = this.personPost,
                 PersonDocument = this.personDocument,
-                Functions = this.functions,
-                ConstructionObjects = null,
+                Functions = this.personFunctions,
             };
 
 
             bool rez = false;
             await Task.Run(async () =>
             {
-                rez = await dataObj.AddPersonAsync(ThisPerson, SelectKontragent);
+                rez = await dataObjAdd.AddPersonAsync(ThisPerson, SelectKontragent);
+                MessageBox.Show("Запись");
             });
             if (rez == false)
             {
