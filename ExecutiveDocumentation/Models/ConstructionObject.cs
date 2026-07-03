@@ -17,11 +17,11 @@ namespace ExecutiveDocumentation.Models
         public DateTime EndDate { get; set; }
         public ProjectForObject ProjectForObject   { get; set; }
         public WorksTypeObg?  ListOfWorks { get; set; }
-        public ResponsiblPerson ConstrOrgRespPerson { get; set; }
-        public ResponsiblPerson ConstrOrgBuildRespPerson { get; set; }
-        public ResponsiblPerson CustomerOrgRespPerson { get; set; }
-        public ResponsiblPerson CustomerOrgBuildRespPerson { get; set; }
-        public ResponsiblPerson ProjectOrgBuildRespPerson { get; set; }
+        public ResponsiblPerson ConstrOrgRespPerson { get; set; }                                // уполномоченный представитель исполнителя (гл. инженер)
+        public ResponsiblPerson ConstrOrgBuildRespPerson { get; set; }                          // уполномоченный представитель исполнителя стройконтроль
+        public ResponsiblPerson CustomerOrgRespPerson { get; set; }                              // уполномоченный представитель заказчика
+        public ResponsiblPerson CustomerOrgBuildRespPerson { get; set; }                        // уполномоченный представитель заказчика стройконтроль
+        public ResponsiblPerson ProjectOrgBuildRespPerson { get; set; }                          // проектровщик
 
     }
 }

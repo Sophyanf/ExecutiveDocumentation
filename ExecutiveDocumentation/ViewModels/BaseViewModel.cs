@@ -26,6 +26,7 @@ namespace ExecutiveDocumentation.ViewModels
 
         protected DataObjectControllerAdd dataObjAdd = DataObjectControllerAdd.Instance;
         protected DataObjectControllerGet dataObjGet = DataObjectControllerGet.Instance;
+        protected DataObjectControllerRemove dataObjRemove = DataObjectControllerRemove.Instance;
 
 
         #region Commands
@@ -179,7 +180,6 @@ namespace ExecutiveDocumentation.ViewModels
             set
             {
                 selectObject = value;
-                selectKontragent = dataObjGet.GetObjectKontragent(selectObject);
                 OnPropertyChanged();
             }
         }
@@ -206,5 +206,7 @@ namespace ExecutiveDocumentation.ViewModels
             AddKontragentView.ShowDialog();
             LoadKontragents();
         }
+
+        public void RemoveConstractionObject() { }
     }
 }

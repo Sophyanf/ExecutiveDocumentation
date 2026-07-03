@@ -29,22 +29,35 @@ namespace ExecutiveDocumentation.Controllers
 
         public List<Kontragent> GetListKontragent()          //Список контрагентов
         {
-            IEnumerable<Kontragent> result = null;
+            IEnumerable<Kontragent> result;
             result = _context.Kontragents.ToList();
             return (List<Kontragent>)result;
         }
 
-        public Kontragent GetObjectKontragent(IDataObject dataObject)          //Получить контрагента конкретного объекта
+        public Kontragent GetObjectKontragent(IDataObject dataObject)
         {
-            Kontragent result = null;
+            if (dataObject is ConstructionObject co)
+            {
+                return _context.Kontragents
+                    .Include("ConstructionObjects")
+                    .FirstOrDefault(k => k.ConstructionObjects.Any(coInner => coInner.ID == co.ID));
+            }
 
-            if (dataObject is ConstructionObject)
-                result = _context.Kontragents.Include("ConstructionObjects").FirstOrDefault(k => k.ConstructionObjects.Where(co => co.ID == ((ConstructionObject)dataObject).ID).Any());
-            else if (dataObject is ProjectForObject)
-                result = _context.Kontragents.Include("ProjectForObjects").FirstOrDefault(k => k.ProjectForObjects.Where(co => co.ID == ((ProjectForObject)dataObject).ID).Any());
-            else if (dataObject is ResponsiblPerson)
-                result = _context.Kontragents.Include("ResponsiblPersons").FirstOrDefault(k => k.ResponsiblPersons.Where(co => co.ID == ((ResponsiblPerson)dataObject).ID).Any());
-            return result;
+            if (dataObject is ProjectForObject proj)
+            {
+                return _context.Kontragents
+                    .Include("ProjectForObjects")
+                    .FirstOrDefault(k => k.ProjectForObjects.Any(pInner => pInner.ID == proj.ID));
+            }
+
+            if (dataObject is ResponsiblPerson rp)
+            {
+                return _context.Kontragents
+                    .Include("ResponsiblPersons")
+                    .FirstOrDefault(k => k.ResponsiblPersons.Any(rpInner => rpInner.ID == rp.ID));
+            }
+
+            return null;
         }
 
 
@@ -88,7 +101,7 @@ namespace ExecutiveDocumentation.Controllers
 
         public ObservableCollection<IDataObject> GetListWorks()
         { 
-            IQueryable<IDataObject> result = null;
+            IQueryable<IDataObject> result;
             result = _context.WorkTypes;
 
             return new ObservableCollection<IDataObject>(result);

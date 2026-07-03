@@ -1,20 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace ExecutiveDocumentation.Models
 {
     public class ProjectForObject : IDataObject
     {
         public int ID { get; set; }
         public string Shifr { get; set; }
-        public Kontragent ProjektСompany { get; set; }
-        public ICollection<ConstructionObject> ConstructionObjects { get; set; } = new List<ConstructionObject>();
+
+        // Только латиница
+        public Kontragent ProjectCompany { get; set; }
+
+        // Просто поле. Никаких [ForeignKey], никаких [Required]
+        public int ConstructionObjectId { get; set; }
+
+        // Навигация. virtual нужен для ленивой загрузки
+        public ConstructionObject ConstructionObject { get; set; }
+
         public override string ToString()
         {
-                return  Shifr + " (" + ProjektСompany.KontragentShortName + ")";
+            var companyName = ProjectCompany?.KontragentShortName ?? "(без компании)";
+            return $"{Shifr} ({companyName})";
         }
     }
 }

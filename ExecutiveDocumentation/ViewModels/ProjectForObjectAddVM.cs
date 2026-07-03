@@ -39,7 +39,7 @@ namespace ExecutiveDocumentation.ViewModels
             ProjectForObject newProduct = new ProjectForObject()// создаем новый проект из текстбоксов и пр.
             {
                 Shifr = projectShifr,
-                ProjektСompany = SelectKontragent  // создан в BaseViewModel
+                ProjectCompany = SelectKontragent  // создан в BaseViewModel
             };
 
            

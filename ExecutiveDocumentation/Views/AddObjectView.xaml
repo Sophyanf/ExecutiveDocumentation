@@ -8,7 +8,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
         xmlns:vm="clr-namespace:ExecutiveDocumentation.ViewModels"
              d:DataContext="{d:DesignInstance Type=vm:ObjectAddViewVM}"
          Style="{StaticResource ResourceKey=WindowStyle}" 
-         Width="1000" Height="650"
+         Width="700" Height="900"
      >
 
 
@@ -47,9 +47,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
             </DockPanel>
 
 
-            <StackPanel Orientation="Vertical"  Height="500" Margin ="20, 15, 20 , 20" Background="White"  >
-
-
+            <StackPanel Orientation="Vertical"   Margin ="20, 15, 20 , 20" Background="White"  >
                 <Label
                     Height="50"
                     HorizontalAlignment="Center"
@@ -58,17 +56,12 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                 />
 
                 <StackPanel Orientation="Horizontal" Height="40">
-
-
                     <Label
-                    Width="350"
+                    Width="250"
                     HorizontalAlignment="Left"
                      VerticalAlignment="Center"
                     Content="Наименование объекта" 
                 />
-
-
-
                     <TextBox 
                          Text="{Binding ObjName}"
                     Width="350"
@@ -78,7 +71,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Height="40">
-                    <Label Width="350"
+                    <Label Width="250"
                     HorizontalAlignment="Left"
                     Content="Адрес" 
                 />
@@ -89,11 +82,10 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                     HorizontalAlignment="Right"
                    
                 />
-
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Height="40">
-                    <Label Width="350"
+                    <Label Width="250"
                     HorizontalAlignment="Left"
                     Content="Заказчик" 
                 />
@@ -122,7 +114,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Height="40">
-                    <Label Width="350"
+                    <Label Width="250"
                     HorizontalAlignment="Left"
                     Content="Дата начала строительства" 
                 />
@@ -136,7 +128,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
 
                 <StackPanel Orientation="Horizontal" Height="40">
                     <Label 
-                        Width="350"
+                        Width="250"
                     HorizontalAlignment="Left"
                     Content="Дата окончания строительства" 
                 />
@@ -150,7 +142,7 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Height="40" >
-                    <Label Width="350"
+                    <Label Width="250"
                     HorizontalAlignment="Left"
                     Content="Данные проекта" 
                 />
@@ -179,11 +171,10 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                     </Button>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Height="70"  HorizontalAlignment="Center"   >
+                <StackPanel Orientation="Horizontal" Height="40"  HorizontalAlignment="Center"   >
                     <Button 
                        Width="150"
                         Height="30"
-                        
                         HorizontalAlignment="Center"  
                         VerticalAlignment="Top"
                         Content="Создать объект"
@@ -192,46 +183,122 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                         >
                     </Button>
                 </StackPanel>
-
+                
                 <StackPanel Orientation="Horizontal" Height="40">
-                    <Label Width="350"
-                    HorizontalAlignment="Left"
-                    Content="Виды работ" 
-                />
-                    <Button Background="Transparent"
-                       Width="250"
-                    Height="30"
-                        Foreground="Blue"
-                        FontStyle="Oblique"
-                        ContentStringFormat="Underline"
-                        HorizontalAlignment="Left"  
-                        VerticalAlignment="Center"
-                        Command="{Binding AddWorksList}"
-                        >
+                    <Label Width="250"
+        HorizontalAlignment="Left"
+        Content="Представитель заказчика" 
+    />
+                    <ComboBox Width="250"
+                      
+        ItemsSource="{Binding Kontragents}" 
+              DisplayMemberPath="KontragentShortName"
+              SelectedItem="{Binding SelectKontragent}"
+        Height="25"
+        HorizontalAlignment="Left"
+        BorderBrush="Aqua"  
+              SelectedIndex="0">
+                    </ComboBox>
 
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Content" Value="{}" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding FlagListOfWorks}" Value="true">
-                                        <Setter Property="Content" Value="Выберите работы для данного объекта" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                    <Button 
+           Width="90"
+            Height="30"
+            Margin="30,0"
+            HorizontalAlignment="Center"  
+            VerticalAlignment="Center"
+            Content="Создать"
+            Command="{Binding AddNewKontragent }"
+            
+            >
+                    </Button>
+                </StackPanel>  
+                
+<StackPanel Orientation="Horizontal" Height="40">
+                    <Label Width="250"
+        HorizontalAlignment="Left"
+        Content="Представитель заказчика стройконтроль" 
+    />
+                    <ComboBox Width="250"
+                      
+        ItemsSource="{Binding Kontragents}" 
+              DisplayMemberPath="KontragentShortName"
+              SelectedItem="{Binding SelectKontragent}"
+        Height="25"
+        HorizontalAlignment="Left"
+        BorderBrush="Aqua"  
+              SelectedIndex="0">
+                    </ComboBox>
+
+                    <Button 
+           Width="90"
+            Height="30"
+            Margin="30,0"
+            HorizontalAlignment="Center"  
+            VerticalAlignment="Center"
+            Content="Создать"
+            Command="{Binding AddNewKontragent }"
+            
+            >
                     </Button>
                 </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" Height="40">
+                    <Label Width="250"
+        HorizontalAlignment="Left"
+        Content="Представитель исполнителя" 
+    />
+                    <ComboBox Width="250"
+                      
+        ItemsSource="{Binding Kontragents}" 
+              DisplayMemberPath="KontragentShortName"
+              SelectedItem="{Binding SelectKontragent}"
+        Height="25"
+        HorizontalAlignment="Left"
+        BorderBrush="Aqua"  
+              SelectedIndex="0">
+                    </ComboBox>
 
-                <Button
-                    Content="Загрузить" 
-                    Margin="0,0,0,20"
-                    Width="90"
-                    Height ="40" Command="{Binding AddNewObject}"
-                />
+                    <Button 
+           Width="90"
+            Height="30"
+            Margin="30,0"
+            HorizontalAlignment="Center"  
+            VerticalAlignment="Center"
+            Content="Создать"
+            Command="{Binding AddNewKontragent }"
+            
+            >
+                    </Button>
+                </StackPanel> 
+                
+                <StackPanel Orientation="Horizontal" Height="40">
+                    <Label Width="250"
+        HorizontalAlignment="Left"
+        Content="Представитель исполнителя стройконтроль" 
+    />
+                    <ComboBox Width="250"
+                      
+        ItemsSource="{Binding Kontragents}" 
+              DisplayMemberPath="KontragentShortName"
+              SelectedItem="{Binding SelectKontragent}"
+        Height="25"
+        HorizontalAlignment="Left"
+        BorderBrush="Aqua"  
+              SelectedIndex="0">
+                    </ComboBox>
 
+                    <Button 
+           Width="90"
+            Height="30"
+            Margin="30,0"
+            HorizontalAlignment="Center"  
+            VerticalAlignment="Center"
+            Content="Создать"
+            Command="{Binding AddNewKontragent }"
+            >
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
-
     </Grid>
-
 </Window>

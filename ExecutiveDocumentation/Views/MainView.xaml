@@ -18,7 +18,7 @@
         <vm:MainViewVM x:Name="MainViewVM"></vm:MainViewVM>
     </Window.DataContext>
 
-    <Grid Background="Transparent" MouseDown='OnDragMoveWindow'>
+    <Grid Background="Transparent" >
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
             <RowDefinition/>
@@ -67,11 +67,11 @@
                 <StackPanel Orientation="Vertical"   >
                     <DataGrid AutoGenerateColumns="False" HorizontalGridLinesBrush="#CAD9EC"
                               RowBackground="White" AlternatingRowBackground="White"
-                              ItemsSource="{Binding ObjectsList}">
+                              ItemsSource="{Binding ObjectsList}" SelectedItem="{Binding SelectObject}">
 
                        
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Объект" Binding="{Binding Path=ObjectName}" Width="300">
+                            <DataGridTextColumn Header="Объект" Binding="{Binding Path=ObjectName}" Width="300" >
                                 <DataGridTextColumn.ElementStyle>
                                      <Style TargetType="TextBlock">
                                          <Setter Property="TextWrapping" Value="Wrap"></Setter>
@@ -82,6 +82,16 @@
                             <DataGridTextColumn Header="Проект"  Binding="{Binding Path=ProjectForObject}" Width="100" />
                             <DataGridTextColumn Header="Проектная организация" Binding="{Binding Path=ProjectForObject.ProjektСompany.KontragentShortName}" Width="50" />
                         </DataGrid.Columns>
+                        
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Копировать"></MenuItem>
+                                <MenuItem Header="Вставить"></MenuItem>
+                                <MenuItem Header="Вырезать"></MenuItem>
+                                <MenuItem Header="Удалить" Command="{Binding RemoveObjectDB}"></MenuItem >
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        
                     </DataGrid>
 
                     <DataGrid AutoGenerateColumns="False" HorizontalGridLinesBrush="#CAD9EC"

@@ -23,16 +23,24 @@ namespace ExecutiveDocumentation.ViewModels
      
         public ActionCommand AddNewObjectDB { get; set; }
         public ActionCommand AddPersonDB { get; set; }
+        public ActionCommand RemoveObjectDB { get; set; }
 
         public MainViewVM()
         {
-            MessageBox.Show(ScreenWidth.ToString());
             AddNewObjectDB = new ActionCommand(x => AddNewObject());
             AddPersonDB = new ActionCommand(x => AddPerson());
+            RemoveObjectDB = new ActionCommand(x => RemoveObject());
             ObjectsList = new ObservableCollection<ConstructionObject>();
             LoadObjects();
             PersonsList = new ObservableCollection<ResponsiblPerson>();
             LoadPersens();
+        }
+
+        private void RemoveObject()
+        {
+            dataObjRemove.RemoveObject(SelectObject);
+            MessageBox.Show(SelectObject.ObjectName);
+            //windowToOpen.Closing += (o, args) => { };
         }
 
         private void AddPerson()

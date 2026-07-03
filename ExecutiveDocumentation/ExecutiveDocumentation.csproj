@@ -103,6 +103,7 @@
     <Compile Include="CheckingWorks.cs" />
     <Compile Include="Controllers\DataObjectControllerAdd.cs" />
     <Compile Include="Controllers\DataObjectControllerGet.cs" />
+    <Compile Include="Controllers\DataObjectControllerRemove.cs" />
     <Compile Include="IDataObject.cs" />
     <Compile Include="Migrations\202309290941471_Init.cs" />
     <Compile Include="Migrations\202309290941471_Init.designer.cs">
@@ -116,6 +117,10 @@
     <Compile Include="Migrations\202406141008039_RespPerson.designer.cs">
       <DependentUpon>202406141008039_RespPerson.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202607031440149_AddProject.cs" />
+    <Compile Include="Migrations\202607031440149_AddProject.designer.cs">
+      <DependentUpon>202607031440149_AddProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OthersClasses\TypeOfWork.cs" />
     <Compile Include="ToStringData.cs" />
@@ -124,7 +129,7 @@
     <Compile Include="Models\ConstructionObject.cs" />
     <Compile Include="Models\Kontragent.cs" />
     <Compile Include="Models\ProjectForObject.cs" />
-    <Compile Include="Models\ResponsiblPerson.cs" />
+    <Compile Include="OthersClasses\ResponsiblPerson.cs" />
     <Compile Include="Models\WorksTypeObg.cs" />
     <Compile Include="Models\WorkType.cs" />
     <Compile Include="ViewModels\ResponsiblPersonVM.cs" />
@@ -222,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202406141008039_RespPerson.resx">
       <DependentUpon>202406141008039_RespPerson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202607031440149_AddProject.resx">
+      <DependentUpon>202607031440149_AddProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
