@@ -51,7 +51,7 @@ namespace ExecutiveDocumentation.ViewModels
 
         private void AddNewObject()
         {
-            ObjectAddView objectView = new ObjectAddView();
+            AddObjectView objectView = new AddObjectView();
             objectView.ShowDialog();
         }
     }

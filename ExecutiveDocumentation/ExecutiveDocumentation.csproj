@@ -100,59 +100,42 @@
     </ApplicationDefinition>
     <Compile Include="ActionCommand.cs" />
     <Compile Include="AppDbContext.cs" />
-    <Compile Include="CheckingWorks.cs" />
     <Compile Include="Controllers\DataObjectControllerAdd.cs" />
     <Compile Include="Controllers\DataObjectControllerGet.cs" />
     <Compile Include="Controllers\DataObjectControllerRemove.cs" />
+    <Compile Include="Enums\OriginDocumentStatus.cs" />
+    <Compile Include="Enums\OriginDocumentStatusDisplay.cs" />
+    <Compile Include="Enums\StatusOfObject.cs" />
+    <Compile Include="Enums\StatusOfObjectDisplay.cs" />
     <Compile Include="IDataObject.cs" />
-    <Compile Include="Migrations\202309290941471_Init.cs" />
-    <Compile Include="Migrations\202309290941471_Init.designer.cs">
-      <DependentUpon>202309290941471_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202310101309249_Corr1.cs" />
-    <Compile Include="Migrations\202310101309249_Corr1.designer.cs">
-      <DependentUpon>202310101309249_Corr1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202406141008039_RespPerson.cs" />
-    <Compile Include="Migrations\202406141008039_RespPerson.designer.cs">
-      <DependentUpon>202406141008039_RespPerson.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202607031440149_AddProject.cs" />
-    <Compile Include="Migrations\202607031440149_AddProject.designer.cs">
-      <DependentUpon>202607031440149_AddProject.cs</DependentUpon>
+    <Compile Include="Migrations\202607051738298_InitialCreate.cs" />
+    <Compile Include="Migrations\202607051738298_InitialCreate.designer.cs">
+      <DependentUpon>202607051738298_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="OthersClasses\TypeOfWork.cs" />
+    <Compile Include="Models\Contract.cs" />
+    <Compile Include="Models\KadastrID.cs" />
+    <Compile Include="Models\Adress.cs" />
+    <Compile Include="Models\TypeOfObject.cs" />
     <Compile Include="ToStringData.cs" />
     <Compile Include="ExcelHelper.cs" />
     <Compile Include="Models\AktHiddenWork.cs" />
     <Compile Include="Models\ConstructionObject.cs" />
     <Compile Include="Models\Kontragent.cs" />
-    <Compile Include="Models\ProjectForObject.cs" />
-    <Compile Include="OthersClasses\ResponsiblPerson.cs" />
-    <Compile Include="Models\WorksTypeObg.cs" />
-    <Compile Include="Models\WorkType.cs" />
+    <Compile Include="Models\ResponsiblPerson.cs" />
     <Compile Include="ViewModels\ResponsiblPersonVM.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\ListOfWorksVM.cs" />
     <Compile Include="ViewModels\MainViewVM.cs" />
-    <Compile Include="ViewModels\ProjectForObjectAddVM.cs" />
     <Compile Include="ViewModels\ObjectAddViewVM.cs" />
     <Compile Include="ViewModels\KontragentAddVM.cs" />
-    <Compile Include="Views\AddNewListWorksObj.xaml.cs">
-      <DependentUpon>AddNewListWorksObj.xaml</DependentUpon>
+    <Compile Include="Views\AddContracttView - Копировать.xaml.cs">
+      <DependentUpon>AddContracttView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddResponsiblPerson.xaml.cs">
       <DependentUpon>AddResponsiblPerson.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ListOfWorksView.xaml.cs">
-      <DependentUpon>ListOfWorksView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\NewTypeOfWork.xaml.cs">
-      <DependentUpon>NewTypeOfWork.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddObjectView.xaml.cs">
       <DependentUpon>AddObjectView.xaml</DependentUpon>
@@ -160,30 +143,19 @@
     <Compile Include="Views\AddKontragentView.xaml.cs">
       <DependentUpon>AddKontragentView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddProjectForObjectView.xaml.cs">
-      <DependentUpon>AddProjectForObjectView.xaml</DependentUpon>
-    </Compile>
     <Page Include="Resources\WindowBorderStyleOtersViews.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddNewListWorksObj.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Views\AddContracttView.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AddResponsiblPerson.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ListOfWorksView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\MainView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\NewTypeOfWork.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,10 +172,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="WordHalper.cs" />
-    <Page Include="Views\AddProjectForObjectView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -219,17 +187,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202309290941471_Init.resx">
-      <DependentUpon>202309290941471_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310101309249_Corr1.resx">
-      <DependentUpon>202310101309249_Corr1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202406141008039_RespPerson.resx">
-      <DependentUpon>202406141008039_RespPerson.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202607031440149_AddProject.resx">
-      <DependentUpon>202607031440149_AddProject.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202607051738298_InitialCreate.resx">
+      <DependentUpon>202607051738298_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -298,6 +257,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\logoNGM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="OthersClasses\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,22 +1,17 @@
-﻿<Window x:Class="ExecutiveDocumentation.Views.ObjectAddView"
-            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
-        mc:Ignorable="d"
+﻿<Window x:Class="ExecutiveDocumentation.Views.AddObjectView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:ExecutiveDocumentation.ViewModels"
-             d:DataContext="{d:DesignInstance Type=vm:ObjectAddViewVM}"
-         Style="{StaticResource ResourceKey=WindowStyle}" 
-         Width="700" Height="900"
-     >
-
-
+        mc:Ignorable="d"
+        Title="Добавить объект"
+        Height="600"
+        Width="900">
     <Window.DataContext>
-        <vm:ObjectAddViewVM x:Name="ObjectAddViewVM"></vm:ObjectAddViewVM>
+        <vm:ObjectAddViewVM/>
     </Window.DataContext>
-
-
+    
     <Grid Background="Transparent" MouseDown='OnDragMoveWindow'>
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
@@ -70,26 +65,14 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                 />
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Height="40">
-                    <Label Width="250"
-                    HorizontalAlignment="Left"
-                    Content="Адрес" 
-                />
-                    <TextBox Name ="tbAdress"
-                    Width="350"
-                    Height="25"
-                         Text="{Binding ObjAdress}"
-                    HorizontalAlignment="Right"
-                   
-                />
-                </StackPanel>
-
+               
+              
                 <StackPanel Orientation="Horizontal" Height="40">
                     <Label Width="250"
                     HorizontalAlignment="Left"
                     Content="Заказчик" 
                 />
-                    <ComboBox Width="250"
+                    <ComboBox Width="300"
                                   
                     ItemsSource="{Binding Kontragents}" 
                           DisplayMemberPath="KontragentShortName"
@@ -112,25 +95,69 @@ xmlns:local="clr-namespace:ExecutiveDocumentation.Views"
                         >
                     </Button>
                 </StackPanel>
-
                 <StackPanel Orientation="Horizontal" Height="40">
                     <Label Width="250"
                     HorizontalAlignment="Left"
-                    Content="Дата начала строительства" 
+                    Content="Договор" 
                 />
-                    <DatePicker 
-                    SelectedDate="{Binding StartDate}"
-                    Width="200"
-                    Height="30"
+                    <ComboBox Width="300"
+                                  
+                    ItemsSource="{Binding Kontragents}" 
+                          DisplayMemberPath="KontragentShortName"
+                          SelectedItem="{Binding SelectKontragent}"
+                    Height="25"
                     HorizontalAlignment="Left"
-                />
+                    BorderBrush="Aqua"  
+                          SelectedIndex="0">
+                    </ComboBox>
+
+                    <Button 
+                       Width="90"
+                        Height="30"
+                        Margin="30,0"
+                        HorizontalAlignment="Center"  
+                        VerticalAlignment="Center"
+                        Content="Создать"
+                        Command="{Binding AddNewKontragent }"
+                        
+                        >
+                    </Button>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="40">
+                    <Label Width="250"
+                    HorizontalAlignment="Left"
+                    Content="Субподрядчик" 
+                />
+                    <ComboBox Width="300"
+                                  
+                    ItemsSource="{Binding Kontragents}" 
+                          DisplayMemberPath="KontragentShortName"
+                          SelectedItem="{Binding SelectKontragent}"
+                    Height="25"
+                    HorizontalAlignment="Left"
+                    BorderBrush="Aqua"  
+                          SelectedIndex="0">
+                    </ComboBox>
+
+                    <Button 
+                       Width="90"
+                        Height="30"
+                        Margin="30,0"
+                        HorizontalAlignment="Center"  
+                        VerticalAlignment="Center"
+                        Content="Создать"
+                        Command="{Binding AddNewKontragent }"
+                        
+                        >
+                    </Button>
+                </StackPanel>
+                
 
                 <StackPanel Orientation="Horizontal" Height="40">
                     <Label 
                         Width="250"
                     HorizontalAlignment="Left"
-                    Content="Дата окончания строительства" 
+                    Content="Дата закрытия" 
                 />
                     <DatePicker Name ="dpFinish"
                             SelectedDate="{Binding EndDate}"

@@ -135,21 +135,7 @@ namespace ExecutiveDocumentation.ViewModels
       
         #endregion
 
-        #region Projects
-        private ObservableCollection<ProjectForObject> projectsList;
-        public ObservableCollection<ProjectForObject> ProjectsList
-
-        {
-            get { return projectsList; }
-            set
-            {
-                projectsList = value;
-                OnPropertyChanged();
-            }
-        }
-       
-
-        #endregion
+        
 
         ConstructionObject thisObj = null;
         public ConstructionObject ThisObj

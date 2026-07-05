@@ -30,20 +30,7 @@ namespace ExecutiveDocumentation.Controllers
        
 
 
-        public async Task<bool> AddProjectAsync(ProjectForObject obj, Kontragent kontragent)  // Добавление свойств в базу данных
-        {
-            try
-            {
-               
-                _context.Kontragents.Include("ProjectForObjects").FirstOrDefault(k => k.ID == kontragent.ID).ProjectForObjects.Add(obj);
-                await _context.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
+       
 
         public async Task<bool> AddObjectAsync(ConstructionObject obj, Kontragent kontragent)  // Добавление объекта
         {

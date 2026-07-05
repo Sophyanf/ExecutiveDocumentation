@@ -32,25 +32,7 @@ namespace ExecutiveDocumentation.Controllers
 
 
 
-        public bool RemoveProjectAsync(ProjectForObject obj)  // Удаление объекта
-        {
-            try
-            {
-                var result = _context.ProjectForObjects.FirstOrDefault(p => p.ID == obj.ID);
-                List<Kontragent> list = _context.Kontragents.Include("ProjectForObjects").Where(k => k.ID == obj.ProjectCompany.ID).ToList();
-                list.ForEach(k => { k.ProjectForObjects = null; });
-                List<ConstructionObject> constructionObjectsList = _context.ConstructionObjects.Include("ProjectForObjects").Where(co => co.ID == obj.ConstructionObject.ID).ToList();
-                constructionObjectsList.ForEach(co => { co.ProjectForObject = null; });
-                _context.ProjectForObjects.Remove(result);
-                _context.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
+       
         public bool RemoveObject(ConstructionObject obj)  // Удаление проекта
         {
             try

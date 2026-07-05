@@ -1,5 +1,4 @@
-﻿using ExecutiveDocumentation.Migrations;
-using ExecutiveDocumentation.Models;
+﻿using ExecutiveDocumentation.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -66,7 +65,6 @@ namespace ExecutiveDocumentation.ViewModels
                 PersonFIO = this.personFIO,
                 PersonPost = this.personPost,
                 PersonDocument = this.personDocument,
-                Functions = this.personFunctions,
             };
 
 

@@ -43,12 +43,6 @@ namespace ExecutiveDocumentation.Controllers
                     .FirstOrDefault(k => k.ConstructionObjects.Any(coInner => coInner.ID == co.ID));
             }
 
-            if (dataObject is ProjectForObject proj)
-            {
-                return _context.Kontragents
-                    .Include("ProjectForObjects")
-                    .FirstOrDefault(k => k.ProjectForObjects.Any(pInner => pInner.ID == proj.ID));
-            }
 
             if (dataObject is ResponsiblPerson rp)
             {
@@ -87,26 +81,6 @@ namespace ExecutiveDocumentation.Controllers
 
 
 
-        public async Task<ObservableCollection<IDataObject>> GetListWorksAsync()
-        {     
-            IQueryable<IDataObject> result = null;
-
-            await Task.Run(() =>
-            {
-                result = _context.WorkTypes;
-            });
-
-            return new ObservableCollection<IDataObject>(result);
-        }
-
-        public ObservableCollection<IDataObject> GetListWorks()
-        { 
-            IQueryable<IDataObject> result;
-            result = _context.WorkTypes;
-
-            return new ObservableCollection<IDataObject>(result);
-        }
-
-       
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExecutiveDocumentation.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,20 +9,25 @@ namespace ExecutiveDocumentation.Models
 {
     public class ConstructionObject : IDataObject
     {
-        public int ID { get; set; }
-        public string ObjectName { get; set; }
-        public string ObjectAdress { get; set; }
-        public Kontragent ConstructionOrganization { get; set; } //Подрядчик НГМ
-        public Kontragent Customer { get; set; } //Заказчик
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public ProjectForObject ProjectForObject   { get; set; }
-        public WorksTypeObg?  ListOfWorks { get; set; }
-        public ResponsiblPerson ConstrOrgRespPerson { get; set; }                                // уполномоченный представитель исполнителя (гл. инженер)
-        public ResponsiblPerson ConstrOrgBuildRespPerson { get; set; }                          // уполномоченный представитель исполнителя стройконтроль
-        public ResponsiblPerson CustomerOrgRespPerson { get; set; }                              // уполномоченный представитель заказчика
-        public ResponsiblPerson CustomerOrgBuildRespPerson { get; set; }                        // уполномоченный представитель заказчика стройконтроль
-        public ResponsiblPerson ProjectOrgBuildRespPerson { get; set; }                          // проектровщик
+        public int ID { get; set; }    
+        public string ObjectName { get; set; } 
+        public Adress ObjectAdress { get; set; }     //связь 1:1
+        public Kontragent ConstructionOrganization { get; set; } //Подрядчик НГМ //связь 1:1
+        public Kontragent ConstructionOrganizationSub { get; set; } //Субподрядчик //связь 1:1
+        public Kontragent Customer { get; set; } //Заказчик //связь 1:1
+        public DateTime EndDate { get; set; } //связь 1:1
+        public int CostOfObject { get; set; } //цена объекта
+        public int SpendingOfObject { get; set; }  //сумма субподряда (затраты)
+        public KadastrID KadastrID { get; set; }  //может быть null //связь 1:1
+        public  TypeOfObject TypeOfObject { get; set; }  //может быть null //связь 1:1
+        public ResponsiblPerson CustomerOrgRespPerson { get; set; }    //связь 1(CustomerOrgRespPerson):много(ResponsiblPerson)// подписант
+        public StatusOfObject Status { get; set; } = StatusOfObject.InWork; // enum
+        public string? Comment { get; set; }
+        public OriginDocumentStatus IsOriginDocuments { get; set; }
+        public OriginDocumentStatus IsOriginDocumentsSub { get; set;}
+        public int PaymentInvoice { get; set; } // счет на оплату
+        public int Invoice { get; set; } // счет-фактура
+        public Contract Contract { get; set; }
 
     }
 }

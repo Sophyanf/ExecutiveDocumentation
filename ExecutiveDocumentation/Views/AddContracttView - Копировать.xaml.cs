@@ -23,9 +23,9 @@ namespace ExecutiveDocumentation.Views
     /// <summary>
     /// Логика взаимодействия для AddKontragentView.xaml
     /// </summary>
-    public partial class AddContracttView : Window
+    public partial class AddKontragentView : Window
     {
-        public AddContracttView()
+        public AddKontragentView()
         {
             InitializeComponent();
         }

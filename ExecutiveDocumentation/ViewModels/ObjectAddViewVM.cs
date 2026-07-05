@@ -1,4 +1,5 @@
 ﻿using ExecutiveDocumentation.Controllers;
+using ExecutiveDocumentation.Enums;
 using ExecutiveDocumentation.Models;
 using ExecutiveDocumentation.Views;
 using Microsoft.Office.Interop.Excel;
@@ -16,156 +17,214 @@ using System.Windows.Controls;
 using Application = System.Windows.Application;
 using Window = System.Windows.Window;
 
-namespace ExecutiveDocumentation.ViewModels
+namespace ExecutiveDocumentation.ViewModels   // <-- только один раз
 {
     public class ObjectAddViewVM : BaseViewModel
-    {
-
-        #region Commands
-        public ActionCommand AddNewProject { get; set; }
-        public ActionCommand AddNewConctrObject { get; set; }
-
-        public ActionCommand DeleteProject { get; set; }
-
-
-        private async void AddNewProjectAsinc()
         {
-            FlagProject = false;
-            ProjectForObjectAddView projectView = new ProjectForObjectAddView();
-            projectView.ShowDialog();
-            //await LoadProjectAsync();
-            ProjectStr = new ProjectForObject();
-            ProjectStr = Projects.LastOrDefault();
-            MessageBox.Show(ProjectStr.ToString());
-        }
+            #region Properties
 
-        #endregion
-
-        #region ProjectForObject
-        ProjectForObject projectStr = null;
-        public ProjectForObject ProjectStr
-        {
-            get { return projectStr; }
-            set
+            // --- Существующие поля (оставляем как было) ---
+            private string objName = string.Empty;
+            public string ObjName
             {
-                projectStr = value;
-                OnPropertyChanged();
+                get => objName;
+                set => UpdateValue(ref objName, value);
             }
-        }
-        private ObservableCollection<ProjectForObject> projects;
-        public ObservableCollection<ProjectForObject> Projects
 
-        {
-            get { return projects; }
-            set
+            private Adress objAdress;
+            public Adress ObjAdress
             {
-                projects = value;
-                OnPropertyChanged();
+                get => objAdress;
+                set => UpdateValue(ref objAdress, value);
             }
-        }
 
-        bool flagProject;
-        public bool FlagProject
-        {
-
-            get { return flagProject; }
-            set
+            private DateTime endDate = DateTime.Now.AddDays(30);
+            public DateTime EndDate
             {
-                flagProject = value;
-                OnPropertyChanged();
+                get => endDate;
+                set => UpdateValue(ref endDate, value);
             }
-        }
 
-
-
-        #endregion
-
-        #region WorksList
-        private ObservableCollection<WorksTypeObg> worksList;
-        public ObservableCollection<WorksTypeObg> WorksList
-
-        {
-            get { return worksList; }
-            set
+            private int costOfObject;
+            public int CostOfObject
             {
-                worksList = value;
-                OnPropertyChanged();
+                get => costOfObject;
+                set => UpdateValue(ref costOfObject, value);
             }
-        }
 
-
-        bool flagListOfWorks;
-        public bool FlagListOfWorks
-        {
-
-            get { return flagListOfWorks; }
-            set
+            private OriginDocumentStatus isOriginDocuments = OriginDocumentStatus.No;
+            public OriginDocumentStatus IsOriginDocuments
             {
-                flagListOfWorks = value;
-                OnPropertyChanged();
+                get => isOriginDocuments;
+                set => UpdateValue(ref isOriginDocuments, value);
             }
-        }
 
-
-
-
-        #endregion
-
-        #region ObgectProperties
-        String objName;
-        public String ObjName { get { return objName; } set { objName = value; OnPropertyChanged(); } }
-
-        String objAdress;
-        public String ObjAdress { get { return objAdress; } set { objAdress = value; OnPropertyChanged(); } }
-
-        DateTime startDate;
-        public DateTime StartDate { get { return startDate; } set { startDate = value; OnPropertyChanged(); } }
-
-        DateTime endDate;
-        public DateTime EndDate { get { return endDate; } set { endDate = value; OnPropertyChanged(); } }
-        #endregion
-        public ObjectAddViewVM()
-        {
-
-            AddNewProject = new ActionCommand(x => AddNewProjectAsinc());
-            AddNewConctrObject = new ActionCommand(x => addNewObj());
-            Kontragents = new ObservableCollection<Kontragent>();
-            LoadKontragents();
-            FlagProject = true;
-            FlagListOfWorks = true;
-            StartDate = DateTime.Now;
-            EndDate = DateTime.Now;
-        }
-
-
-
-        private async void addNewObj()
-        {
-            ThisObj = new ConstructionObject()// создаем новый проект из текстбоксов и пр.
+            private OriginDocumentStatus isOriginDocumentsSub = OriginDocumentStatus.No;
+            public OriginDocumentStatus IsOriginDocumentsSub
             {
-                ObjectName = ObjName,
-                ObjectAdress = ObjAdress,
-                ConstructionOrganization = Kontragents.FirstOrDefault(k => k.KontragentShortName == "НовГазМонтаж"),//Подрядчик НГМ
-                Customer = SelectKontragent,  //Заказчик
-                ProjectForObject = ProjectStr,
-                StartDate = StartDate,
-                EndDate = EndDate,
-            };
-
-
-            bool rez = false;
-            await Task.Run(async () =>
-            {
-                rez = await dataObjAdd.AddObjectAsync(ThisObj, SelectKontragent);
-
-            });
-            if (rez == false)
-            {
-                MessageBox.Show("Ошибка!!! Проверьте объект");
-                return;
+                get => isOriginDocumentsSub;
+                set => UpdateValue(ref isOriginDocumentsSub, value);
             }
-            else MessageBox.Show("Ob]ect add");
-            Application.Current.Windows.OfType<Window>().SingleOrDefault(y => y.IsActive).Close();
+
+            public StatusOfObject Status => StatusOfObject.InWork;
+
+            private TypeOfObject? typeOfObject;
+            public TypeOfObject? TypeOfObject
+            {
+                get => typeOfObject;
+                set => UpdateValue(ref typeOfObject, value);
+            }
+
+            private ResponsiblPerson? customerOrgRespPerson;
+            public ResponsiblPerson? CustomerOrgRespPerson
+            {
+                get => customerOrgRespPerson;
+                set => UpdateValue(ref customerOrgRespPerson, value);
+            }
+
+            private Kontragent? constructionOrganization;
+            public Kontragent? ConstructionOrganization
+            {
+                get => constructionOrganization;
+                set => UpdateValue(ref constructionOrganization, value);
+            }
+
+            private Kontragent? constructionOrganizationSub;
+            public Kontragent? ConstructionOrganizationSub
+            {
+                get => constructionOrganizationSub;
+                set => UpdateValue(ref constructionOrganizationSub, value);
+            }
+
+            private Kontragent? customer;
+            public Kontragent? Customer
+            {
+                get => customer;
+                set => UpdateValue(ref customer, value);
+            }
+
+
+            // --- Новый блок: Contract ---
+
+            // Список контрактов для ComboBox
+            private ObservableCollection<Contract> contractsList = new ObservableCollection<Contract>();
+            public ObservableCollection<Contract> ContractsList
+            {
+                get => contractsList;
+                set => UpdateValue(ref contractsList, value);
+            }
+
+            // Выбранный контракт (то, что пойдёт в ConstructionObject)
+            private Contract? contract;
+            public Contract? Contract
+            {
+                get => contract;
+                set => UpdateValue(ref contract, value);
+            }
+
+            #endregion
+
+            #region Commands
+
+            public ActionCommand AddNewConctrObject { get; set; }
+
+            public ObjectAddViewVM()
+            {
+                AddNewConctrObject = new ActionCommand(x => AddNewObjectAsync());
+
+                Kontragents = new ObservableCollection<Kontragent>();
+                LoadKontragents();
+
+                ContractsList = new ObservableCollection<Contract>();
+                LoadContracts();
+
+                // Если нужно сразу подставить какого-то подрядчика
+                ConstructionOrganization = Kontragents.FirstOrDefault(k => k.KontragentShortName == "НовГазМонтаж");
+            }
+
+            #endregion
+
+            private void LoadContracts()
+            {
+                // Здесь ты подключаешь свою логику загрузки (EF6 / EF Core / репозиторий)
+                // Пример для EF6 (т.к. ты работал с EF6):
+                using (var ctx = new AppDbContext())
+                {
+                    var items = ctx.Contracts
+                        .OrderBy(c => c.ContractNumber)
+                        .ToList();
+
+                    ContractsList.Clear();
+                    foreach (var c in items)
+                    {
+                        ContractsList.Add(c);
+                    }
+                }
+            }
+
+            private async Task AddNewObjectAsync()
+            {
+                if (string.IsNullOrWhiteSpace(ObjName))
+                {
+                    MessageBox.Show("Введите наименование объекта.");
+                    return;
+                }
+
+                if (Customer == null)
+                {
+                    MessageBox.Show("Выберите заказчика из списка.");
+                    return;
+                }
+
+                var newObject = new ConstructionObject
+                {
+                    ObjectName = ObjName,
+                    ObjectAdress = ObjAdress,
+                    EndDate = EndDate,
+                    CostOfObject = CostOfObject,
+
+                    Status = Status,
+                    IsOriginDocuments = IsOriginDocuments,
+                    IsOriginDocumentsSub = IsOriginDocumentsSub,
+
+                    TypeOfObject = TypeOfObject,
+                    CustomerOrgRespPerson = CustomerOrgRespPerson,
+
+                    ConstructionOrganization = ConstructionOrganization,
+                    ConstructionOrganizationSub = ConstructionOrganizationSub,
+                    Customer = Customer,
+
+                    Contract = Contract  // <-- вот тут мы сохраняем выбранный контракт
+                };
+
+                try
+                {
+                    bool result = await Task.Run(() => dataObjAdd.AddObjectAsync(newObject, Customer));
+                    if (result)
+                    {
+                        MessageBox.Show("Объект успешно создан!");
+                        CloseCurrentWindow();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Не удалось сохранить объект. Проверьте логи.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка: {ex.Message}");
+                }
+            }
+
+            private void CloseCurrentWindow()
+            {
+                var activeWindow = Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.IsActive);
+                if (activeWindow != null)
+                {
+                    activeWindow.Close();
+                }
+            }
         }
     }
-}
+
+
